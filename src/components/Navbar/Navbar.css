@@ -1,0 +1,53 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(88, 87, 87);
+  padding: 20px;
+}
+
+.nav-title {
+  font-size: 30px;
+  color: wheat;
+}
+
+.hamburger {
+  font-size: 30px;
+}
+
+.three-dots {
+  font-size: 30px;
+}
+
+.link-con {
+  background-color: black;
+  opacity: 80%;
+  background-color: black;
+  opacity: 80%;
+  margin-left: 50%;
+  height: 40vh;
+  transition: ease-out 1s;
+}
+
+.nav-links {
+  font-size: 30px;
+  color: whitesmoke;
+  line-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: whitesmoke;
+  text-decoration: none;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
