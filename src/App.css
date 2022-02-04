@@ -108,6 +108,8 @@ section {
 body {
   line-height: 1;
   background-color: darkgray;
+  font-family: "Righteous", cursive;
+  font-family: "Staatliches", cursive;
 }
 ol,
 ul {

@@ -6,17 +6,17 @@ const navItems = [
   },
   {
     title: "Search",
-    url: "#",
+    url: "/search",
     cName: "nav-link",
   },
   {
     title: "Games",
-    url: "#",
+    url: "/games",
     cName: "nav-link",
   },
   {
     title: "News",
-    url: "#",
+    url: "/news",
     cName: "nav-link",
   },
   {
@@ -25,15 +25,10 @@ const navItems = [
     cName: "nav-link",
   },
   {
-    title: "Sign in",
-    url: "#",
+    title: "Sign up",
+    url: "/signin",
     cName: "nav-link",
   },
-  // {
-  //   title: "Join up",
-  //   url: "#",
-  //   cName: "nav-links-mobile",
-  // },
 ];
 
 export default navItems;

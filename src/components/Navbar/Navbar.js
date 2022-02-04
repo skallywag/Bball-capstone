@@ -1,36 +1,37 @@
 import React from "react";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { handleClick } from "../../Redux/sidenav";
 import { FaBars } from "react-icons/fa";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import navItems from "./NavbarData";
+import { CgProfile } from "react-icons/cg";
+import { ImCross } from "react-icons/im";
+// import * as Icons from "react-icons/all";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [showNav, setShowNav] = useState(false);
-
+  const { sidenav } = useSelector((state) => state.sidenav);
+  const dispatch = useDispatch();
   return (
     <div className="nav-wrapper">
       <div className="nav-bar">
-        <BsThreeDotsVertical
+        {sidenav ? (
+          <ImCross
+            className="hamburger"
+            onClick={() => dispatch(handleClick(!sidenav))}
+          />
+        ) : (
+          <FaBars
+            className="hamburger"
+            onClick={() => dispatch(handleClick(!sidenav))}
+          />
+        )}
+        <h1 className="nav-title">Shwifty Hoops</h1>
+        {/* <CgProfile
           className="three-dots"
           onClick={() => alert("working")}
-        ></BsThreeDotsVertical>
-        <h1 className="nav-title">Shwifty Hoops</h1>
-        <FaBars className="hamburger" onClick={() => setShowNav(true)}></FaBars>
-      </div>
-
-      <div className={`link-con ${showNav ? "show" : "hide"}`}>
-        <ul className="nav-links">
-          {navItems.map((item, idx) => {
-            return (
-              <li key={idx}>
-                <a className={item.cName} href={item.url}>
-                  {item.title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        ></CgProfile> */}
+        <button onClick={() => alert("working")} className="login-btn">
+          Login
+        </button>
       </div>
     </div>
   );
