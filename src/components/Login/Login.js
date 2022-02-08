@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const validate = (values) => {
@@ -42,7 +43,7 @@ const Login = (props) => {
         />
         <form onSubmit={formik.handleSubmit}>
           <div className="login-input-con">
-            {formik.errors.loginEmail ? (
+            {formik.touched.loginEmail && formik.errors.loginEmail ? (
               <span>{formik.errors.loginEmail}</span>
             ) : null}
             <input
@@ -53,9 +54,9 @@ const Login = (props) => {
               name="loginEmail"
               id="loginEmail"
               className="login-input"
-              placeholder="Email"
+              placeholder=" &#xf1fa; Email"
             />
-            {formik.errors.loginPass ? (
+            {formik.touched.loginPass && formik.errors.loginPass ? (
               <span>{formik.errors.loginPass}</span>
             ) : null}
             <input
@@ -66,13 +67,16 @@ const Login = (props) => {
               name="loginPass"
               id="loginPass"
               className="login-input"
-              placeholder="Password"
+              placeholder=" &#xf084; Password"
             />
             <button type="submit" className="login-btn">
               Login
             </button>
           </div>
         </form>
+        <Link to="signup" onClick={() => props.setShowLogin(false)}>
+          <span className="login-q">dont have an account?</span>
+        </Link>
       </div>
     </div>
   );

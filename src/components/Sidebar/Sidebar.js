@@ -4,11 +4,15 @@ import { handleLinkChange } from "../../Redux/sidenav";
 import navItems from "../Navbar/navItems";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { GrInstagram } from "react-icons/gr";
+import { GrFacebook } from "react-icons/gr";
+import { GrTwitter } from "react-icons/gr";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const { sidenav } = useSelector((state) => state.sidenav);
   const dispatch = useDispatch();
+
   return (
     <div className={`side-bar ${sidenav ? "show" : "hide"}`}>
       <ul className="nav-links">
@@ -25,6 +29,17 @@ const Sidebar = () => {
           );
         })}
       </ul>
+      <div className="social-con">
+        <a className="social-link" href="https://facebook.com" target="blank">
+          <GrFacebook className="social-icon" />
+        </a>
+        <a className="social-link" href="https://twitter.com" target="blank">
+          <GrTwitter className="social-icon" />
+        </a>
+        <a className="social-link" href="https://instagram.com" target="blank">
+          <GrInstagram className="social-icon" />
+        </a>
+      </div>
     </div>
   );
 };

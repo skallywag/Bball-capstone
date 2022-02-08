@@ -69,9 +69,10 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             id="userName"
             type="text"
-            placeholder="Username"
+            placeholder=" &#xf434; Username"
             className="signup-input"
           />
+
           <div>
             {formik.touched.firstName && formik.errors.firstName ? (
               <span className="signup-error">{formik.errors.firstName}</span>
@@ -83,7 +84,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             id="firstName"
             type="text"
-            placeholder="First Name"
+            placeholder=" &#xf007; First Name"
             className="signup-input"
           />
           {formik.touched.lastName && formik.errors.lastName ? (
@@ -95,7 +96,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             id="lastName"
             type="text"
-            placeholder="Last Name"
+            placeholder=" &#xf508; Last Name"
             className="signup-input"
           />
           {formik.touched.email && formik.errors.email ? (
@@ -107,7 +108,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             id="email"
             type="text"
-            placeholder="Email"
+            placeholder=" &#xf1fa; Email"
             className="signup-input"
           />
           {formik.touched.password && formik.errors.password ? (
@@ -119,7 +120,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             id="password"
             type="password"
-            placeholder="Password"
+            placeholder=" &#xf09c; Password"
             className="signup-input"
           />
           {formik.touched.rePassword && formik.errors.rePassword ? (
@@ -131,7 +132,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             id="rePassword"
             type="password"
-            placeholder="Confirm Password"
+            placeholder=" &#xf023; Confirm Password"
             className="signup-input"
           />
           <button type="submit" className="signup-btn">

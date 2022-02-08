@@ -9,9 +9,7 @@ import News from "./pages/News/News";
 import Games from "./pages/Games/Games";
 import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
-
 import "./App.css";
-import Login from "./components/Login/Login";
 
 function App() {
   // redux toolkit
@@ -29,9 +27,10 @@ function App() {
         <Route path="/games" element={<Games />} />
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
-        <Route path="/signin" element={<CreateAcc />} />
+        <Route path="/signup" element={<CreateAcc />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      {/* <Footer /> */}
       {/* </div> */}
       {/* </div> */}
     </Router>

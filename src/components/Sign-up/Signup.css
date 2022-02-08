@@ -1,3 +1,7 @@
+* {
+  font-family: FontAwesome;
+}
+
 .signup-con {
   display: flex;
   align-items: center;

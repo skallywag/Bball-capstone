@@ -26,7 +26,7 @@ const navItems = [
   },
   {
     title: "Sign up",
-    url: "/signin",
+    url: "/signup",
     cName: "nav-link",
   },
 ];
