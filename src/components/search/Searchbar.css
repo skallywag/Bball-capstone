@@ -1,0 +1,34 @@
+.search-con {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+}
+
+.create-game-btn {
+  background: #082233;
+  background-image: -webkit-linear-gradient(top, #082233, #ffffff);
+  background-image: -moz-linear-gradient(top, #082233, #ffffff);
+  background-image: -ms-linear-gradient(top, #082233, #ffffff);
+  background-image: -o-linear-gradient(top, #082233, #ffffff);
+  background-image: linear-gradient(to bottom, #082233, #ffffff);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Georgia;
+  color: black;
+  font-size: 30px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.create-game-btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}

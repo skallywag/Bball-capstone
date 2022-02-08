@@ -11,7 +11,7 @@ export const sidenavSlice = createSlice({
     handleClick: (state, action) => {
       state.sidenav = action.payload;
     },
-    handleLinkChange: (state, action) => {
+    handleLinkChange: (state) => {
       state.sidenav = false;
     },
   },

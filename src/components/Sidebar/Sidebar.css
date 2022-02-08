@@ -1,6 +1,8 @@
 .side-bar {
   background-color: green;
-  width: 25%;
+  width: 23%;
+  position: absolute;
+  height: 100vh;
 }
 
 /* .link-con {
@@ -37,7 +39,7 @@
 }
 
 .show {
-  display: flex;
+  display: block;
 }
 
 .hide {

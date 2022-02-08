@@ -15,7 +15,7 @@ const navItems = [
     cName: "nav-link",
   },
   {
-    title: "News",
+    title: "NBA News",
     url: "/news",
     cName: "nav-link",
   },

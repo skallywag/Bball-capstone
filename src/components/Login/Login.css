@@ -1,3 +1,33 @@
 .login-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: tomato;
+  border-radius: 10px;
+  height: 40vh;
+  width: 35vw;
+}
+
+.login-input-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-input {
+  margin-bottom: 30px;
+  font-size: 30px;
+  border-style: none;
+  outline: none;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.close-login {
+  font-size: 35px;
+  position: absolute;
+  top: 31%;
+  right: 33.2%;
+  cursor: pointer;
 }
