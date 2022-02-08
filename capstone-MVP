@@ -1,0 +1,23 @@
+My project will be a basketball pickup site.
+
+mvp: 
+mvp will utilize geo locator. 
+user will be able to login and create a basketball game. 
+users will be able to join/check-in to created games. 
+users can see how many players are checked into games
+users can see the location of the game
+users can see how many are checked into a game
+
+DataBase: 
+*stores all user accounts 
+*stores created games 
+stores users past games
+
+views/pages: 
+log in modal
+signup page 
+profile dashboard 
+NBA news page 
+search for games page
+
+
