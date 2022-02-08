@@ -6,7 +6,7 @@ user will be able to login and create a basketball game.
 users will be able to join/check-in to created games. 
 users can see how many players are checked into each game.
 users can see what gym/location the games at.
-users can see how many are checked into a game
+
 
 DataBase: 
 *stores all user accounts 
