@@ -106,6 +106,9 @@ body {
   font-family: "Righteous", cursive;
   font-family: "Staatliches", cursive;
 }
+* {
+  font-family: FontAwesome;
+}
 ol,
 ul {
   list-style: none;

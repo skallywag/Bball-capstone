@@ -28,7 +28,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<CreateAcc />} />
-        <Route path="*" element={<ErrorPage />} />
+        {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>
       {/* <Footer /> */}
       {/* </div> */}

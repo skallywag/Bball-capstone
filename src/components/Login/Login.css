@@ -1,12 +1,8 @@
-* {
-  font-family: FontAwesome;
-}
-
 .login-con {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: tomato;
+  background-color: #cf5300;
   border-radius: 10px;
   height: 40vh;
   width: 35vw;

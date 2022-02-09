@@ -1,14 +1,9 @@
-* {
-  font-family: FontAwesome;
-}
-
 .signup-con {
   display: flex;
   align-items: center;
   /* justify-content: center; */
 
   flex-direction: column;
-  background: pink;
   height: 100vh;
 }
 .signup-title {
@@ -20,10 +15,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: red;
-  width: 55vw;
-  height: 70vh;
+  /* background: black; */
+  width: 35vw;
+  height: 60vh;
   border-radius: 20px;
+  background: rgba(3, 3, 3, 0.856);
 }
 
 .signup-input {
@@ -34,6 +30,7 @@
   border-style: none;
   outline: none;
   font-size: 25px;
+  opacity: 100%;
 }
 
 .signup-btn {
