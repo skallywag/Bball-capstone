@@ -4,7 +4,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
-const Login = (props) => {
+const Login = ({ show, setShowLogin }) => {
   const validate = (values) => {
     const errors = {};
     let emailRegex = new RegExp(
@@ -30,16 +30,16 @@ const Login = (props) => {
     onSubmit: (values, { resetForm }) => {
       alert(JSON.stringify(values, null, 2));
       resetForm({ values: "" });
-      props.setShowLogin(false);
+      setShowLogin(false);
     },
     validate,
   });
   return (
-    <div className={`overlay ${props.show ? "show" : "hide"}`}>
+    <div className={`overlay ${show ? "show" : "hide"}`}>
       <div className="login-con">
         <AiFillCloseCircle
           className="close-login"
-          onClick={() => props.setShowLogin(false)}
+          onClick={() => setShowLogin(false)}
         />
         <form onSubmit={formik.handleSubmit}>
           <div className="login-input-con">
@@ -74,7 +74,7 @@ const Login = (props) => {
             </button>
           </div>
         </form>
-        <Link to="signup" onClick={() => props.setShowLogin(false)}>
+        <Link to="signup" onClick={() => setShowLogin(false)}>
           <span className="login-q">dont have an account?</span>
         </Link>
       </div>

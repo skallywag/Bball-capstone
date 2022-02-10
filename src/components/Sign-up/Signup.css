@@ -20,6 +20,11 @@
   height: 60vh;
   border-radius: 20px;
   background: rgba(3, 3, 3, 0.856);
+  margin-top: 70px;
+
+  -webkit-box-shadow: 0px 0px 38px 18px #1d1c1c;
+  -moz-box-shadow: 0px 0px 38px 18px #202020;
+  box-shadow: 0px 0px 38px 18px #1f1e1e;
 }
 
 .signup-input {
@@ -31,6 +36,11 @@
   outline: none;
   font-size: 25px;
   opacity: 100%;
+  color: #cf5300;
+}
+
+::placeholder {
+  /* color: #cf5300; */
 }
 
 .signup-btn {
@@ -47,7 +57,7 @@
 }
 
 .signup-error {
-  color: #fff;
-  font-size: 12px;
+  color: #cf5300;
+  font-size: 15px;
   text-align: left;
 }

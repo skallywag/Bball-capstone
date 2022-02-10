@@ -22,13 +22,15 @@
   justify-content: center;
   color: whitesmoke;
   text-decoration: none;
-  border-bottom: 1px solid black;
-  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(128, 127, 127);
+  line-height: 60px;
   width: 100%;
 }
 
 .nav-link:hover {
   color: #cf5300;
+  border-bottom: #cf5300 1px solid;
+  background-color: rgb(88, 87, 87);
 }
 
 .show {
@@ -51,8 +53,8 @@
   color: whitesmoke;
 }
 .side-bar {
-  -webkit-animation: side-bar-tl 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  animation: side-bar-tl 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-animation: side-bar-tl 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: side-bar-tl 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes side-bar-tl {

@@ -8,7 +8,7 @@
 
 .nav-title {
   font-size: 30px;
-  color: #e66108;
+  color: #cf5300;
 }
 
 .hamburger {
@@ -16,13 +16,9 @@
   cursor: pointer;
 }
 
-.three-dots {
-  font-size: 30px;
-}
-
-.login-btn {
+.nav-login-btn {
   background-color: black;
-  color: wheat;
+  color: #cf5300;
   border-radius: 5px;
   border-style: none;
   font-size: 30px;
@@ -30,7 +26,7 @@
   margin-right: 20px;
 }
 
-.login-btn:hover {
+.nav-login-btn:hover {
   cursor: pointer;
   background-color: wheat;
   color: black;

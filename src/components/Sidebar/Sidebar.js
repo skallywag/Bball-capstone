@@ -9,7 +9,7 @@ import { GrFacebook } from "react-icons/gr";
 import { GrTwitter } from "react-icons/gr";
 import "./Sidebar.css";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   const { sidenav } = useSelector((state) => state.sidenav);
   const dispatch = useDispatch();
 

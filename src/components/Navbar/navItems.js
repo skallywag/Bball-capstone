@@ -5,13 +5,13 @@ const navItems = [
     cName: "nav-link",
   },
   {
-    title: "Search",
+    title: "Games",
     url: "/search",
     cName: "nav-link",
   },
   {
-    title: "Games",
-    url: "/games",
+    title: "Standings",
+    url: "/standings",
     cName: "nav-link",
   },
   {

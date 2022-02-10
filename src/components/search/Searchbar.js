@@ -5,15 +5,14 @@ import "./Searchbar.css";
 
 const SearchBar = () => {
   return (
-    <div>
-      <div className="search-con">
-        <div>
-          <input
-            type="text"
-            placeholder="&#xf434; Search Games"
-            className="search-bar"
-          />
-        </div>
+    <div className="search-con">
+      <button className="create-btn">Create Game</button>
+      <div className="input-con">
+        <input
+          type="text"
+          placeholder="&#xf434; Search Games"
+          className="search-bar"
+        />
       </div>
     </div>
   );

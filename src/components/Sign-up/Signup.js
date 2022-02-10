@@ -57,7 +57,6 @@ const Signup = () => {
 
   return (
     <div className="signup-con">
-      <h1 className="signup-title">Create Your Account</h1>
       <form onSubmit={formik.handleSubmit} className="signup-form">
         <div className="signup-input-con">
           {formik.errors.userName ? (

@@ -6,7 +6,7 @@ import ErrorPage from "./pages/Error/ErrorPage";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import News from "./pages/News/News";
-import Games from "./pages/Games/Games";
+import Standings from "./pages/Standings/Standings";
 import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
 import "./App.css";
@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/games" element={<Games />} />
+        <Route path="/standings" element={<Standings />} />
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<CreateAcc />} />

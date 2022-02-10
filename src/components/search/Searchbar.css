@@ -1,14 +1,29 @@
 .search-con {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.input-con {
 }
 
 .search-bar {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   font-size: 35px;
   border-radius: 10px;
   outline: none;
   border-style: none;
   font-weight: 900;
   padding: 10px;
+}
+
+.create-btn {
+  font-size: 30px;
+  padding: 8px 10px;
+  background-color: #cf5300;
+  border-radius: 5px;
+  border-style: none;
+  margin-bottom: 30px;
 }

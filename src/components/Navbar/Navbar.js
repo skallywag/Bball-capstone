@@ -36,7 +36,7 @@ const Navbar = () => {
           className="three-dots"
           onClick={() => alert("working")}
         ></CgProfile> */}
-        <button onClick={() => setShowLogin(true)} className="login-btn">
+        <button onClick={() => setShowLogin(true)} className="nav-login-btn">
           Login
         </button>
       </div>
