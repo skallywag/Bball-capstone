@@ -563,7 +563,7 @@ const teams = [
     TeamID: 19,
     Key: "POR",
     City: "Portland",
-    Name: "Trail Blazers",
+    Name: "blazers",
     Conference: "Western",
     Division: "Northwest",
     Wins: 21,

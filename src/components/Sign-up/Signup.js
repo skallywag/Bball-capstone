@@ -1,7 +1,5 @@
 import React from "react";
-
 import { useFormik } from "formik";
-
 import {
   FaUserTag,
   FaUserTie,
@@ -10,7 +8,6 @@ import {
   FaLock,
 } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-
 import "./Signup.css";
 
 const Signup = () => {
@@ -23,14 +20,19 @@ const Signup = () => {
 
     if (!values.userName) {
       errors.userName = "*Required";
-    } else if (values.userName.length <= 2) {
-      errors.userName = "Please enter a valid name";
+    } else if (values.userName.length < 4) {
+      errors.userName = "Username must be more than 4 characters";
     }
     if (!values.firstName) {
       errors.firstName = "*Required";
+    } else if (values.firstName.length <= 2) {
+      errors.firstName = "Name must be more than 2 characters";
     }
+
     if (!values.lastName) {
       errors.lastName = "*Required";
+    } else if (values.lastName.length <= 2) {
+      errors.lastName = "Last name must be 3 characters or more";
     }
     if (!values.email) {
       errors.email = "*Required";
@@ -70,9 +72,10 @@ const Signup = () => {
     <div className="signup-con">
       <form onSubmit={formik.handleSubmit} className="signup-form">
         <div className="signup-input-con">
-          {formik.errors.userName ? (
+          {formik.touched.userName && formik.errors.userName ? (
             <span className="input-error">{formik.errors.userName}</span>
           ) : null}
+
           <div className="flex align-center signup-input-ctn">
             <FaUserTag className="signup-icon" />
             <input
@@ -86,11 +89,9 @@ const Signup = () => {
             />
           </div>
 
-          <div>
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <span className="input-error">{formik.errors.firstName}</span>
-            ) : null}
-          </div>
+          {formik.touched.firstName && formik.errors.firstName ? (
+            <span className="input-error">{formik.errors.firstName}</span>
+          ) : null}
 
           <div className="flex align-center signup-input-ctn">
             <FaUserTie className="signup-icon" />
@@ -108,6 +109,7 @@ const Signup = () => {
           {formik.touched.lastName && formik.errors.lastName ? (
             <span className="input-error">{formik.errors.lastName}</span>
           ) : null}
+
           <div className="flex align-center signup-input-ctn">
             <FaSignature className="signup-icon" />
             <input
@@ -120,6 +122,7 @@ const Signup = () => {
               className="signup-input"
             />
           </div>
+
           {formik.touched.email && formik.errors.email ? (
             <span className="input-error">{formik.errors.email}</span>
           ) : null}
@@ -136,9 +139,11 @@ const Signup = () => {
               className="signup-input"
             />
           </div>
+
           {formik.touched.password && formik.errors.password ? (
             <span className="input-error">{formik.errors.password}</span>
           ) : null}
+
           <div className="flex align-center signup-input-ctn">
             <FaUnlock className="signup-icon" />
             <input
@@ -151,9 +156,11 @@ const Signup = () => {
               className="signup-input"
             />
           </div>
+
           {formik.touched.rePassword && formik.errors.rePassword ? (
             <span className="input-error">{formik.errors.rePassword}</span>
           ) : null}
+
           <div className="flex align-center signup-input-ctn">
             <FaLock className="signup-icon" />
             <input
@@ -166,6 +173,7 @@ const Signup = () => {
               className="signup-input"
             />
           </div>
+
           <button type="submit" className="signup-btn">
             Lets Hoop
           </button>

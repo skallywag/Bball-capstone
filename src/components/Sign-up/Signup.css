@@ -15,12 +15,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: 35vw; */
-  /* height: 60vh; */
   border-radius: 20px;
   background: rgba(3, 3, 3, 0.856);
   margin-top: 70px;
-  padding: 40px;
+  padding: 60px;
 
   -webkit-box-shadow: 0px 0px 38px 18px #1d1c1c;
   -moz-box-shadow: 0px 0px 38px 18px #202020;
@@ -53,6 +51,7 @@
   background-color: #cf5300;
   color: black;
   cursor: pointer;
+  transition: all 0.6s ease;
 }
 
 .signup-input-ctn {

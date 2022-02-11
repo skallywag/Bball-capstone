@@ -21,7 +21,7 @@ table {
 
 th,
 td {
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid black;
   text-align: left;
   padding: 5px;
   font-size: 22px;
@@ -33,8 +33,9 @@ th {
 }
 
 .toggle-btn {
-  background-color: silver;
+  background: transparent;
   border: 1px solid white;
+  color: silver;
   /* border-style: none; */
   font-size: 30px;
   font-weight: 900;
