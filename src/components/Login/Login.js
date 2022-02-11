@@ -1,6 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { ImKey } from "react-icons/im";
+import { MdAlternateEmail } from "react-icons/md";
+import { FaArrowCircleRight } from "react-icons/fa";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
@@ -12,13 +15,13 @@ const Login = ({ show, setShowLogin }) => {
     );
 
     if (!values.loginEmail) {
-      errors.loginEmail = "Required";
+      errors.loginEmail = "*Required";
     } else if (!emailRegex.test(values.loginEmail)) {
       errors.loginEmail = "Please enter in a valid email";
     }
 
     if (!values.loginPass) {
-      errors.loginPass = "Required";
+      errors.loginPass = "*Required";
     }
     return errors;
   };
@@ -44,33 +47,42 @@ const Login = ({ show, setShowLogin }) => {
         <form onSubmit={formik.handleSubmit}>
           <div className="login-input-con">
             {formik.touched.loginEmail && formik.errors.loginEmail ? (
-              <span>{formik.errors.loginEmail}</span>
+              <span className="input-error">{formik.errors.loginEmail}</span>
             ) : null}
-            <input
-              value={formik.values.loginEmail}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              type="text"
-              name="loginEmail"
-              id="loginEmail"
-              className="login-input"
-              placeholder=" &#xf1fa; Email"
-            />
+            <div className="flex align-center login-input-ctn">
+              <MdAlternateEmail className="login-icon" />
+              <input
+                value={formik.values.loginEmail}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                type="text"
+                name="loginEmail"
+                id="loginEmail"
+                className="login-input"
+                placeholder="Email"
+              />
+            </div>
+
             {formik.touched.loginPass && formik.errors.loginPass ? (
-              <span>{formik.errors.loginPass}</span>
+              <span className="input-error">{formik.errors.loginPass}</span>
             ) : null}
-            <input
-              value={formik.values.loginPass}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              type="text"
-              name="loginPass"
-              id="loginPass"
-              className="login-input"
-              placeholder=" &#xf084; Password"
-            />
+
+            <div className="flex align-center login-input-ctn">
+              <ImKey className="login-icon" />
+              <input
+                value={formik.values.loginPass}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                type="password"
+                name="loginPass"
+                id="loginPass"
+                className="login-input"
+                placeholder="Password"
+              />
+            </div>
+
             <button type="submit" className="login-btn">
-              Login
+              <FaArrowCircleRight className="login-btn-icon" />
             </button>
           </div>
         </form>

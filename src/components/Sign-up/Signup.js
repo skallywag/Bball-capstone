@@ -71,7 +71,7 @@ const Signup = () => {
       <form onSubmit={formik.handleSubmit} className="signup-form">
         <div className="signup-input-con">
           {formik.errors.userName ? (
-            <span className="signup-error">{formik.errors.userName}</span>
+            <span className="input-error">{formik.errors.userName}</span>
           ) : null}
           <div className="flex align-center signup-input-ctn">
             <FaUserTag className="signup-icon" />
@@ -88,7 +88,7 @@ const Signup = () => {
 
           <div>
             {formik.touched.firstName && formik.errors.firstName ? (
-              <span className="signup-error">{formik.errors.firstName}</span>
+              <span className="input-error">{formik.errors.firstName}</span>
             ) : null}
           </div>
 
@@ -106,7 +106,7 @@ const Signup = () => {
           </div>
 
           {formik.touched.lastName && formik.errors.lastName ? (
-            <span className="signup-error">{formik.errors.lastName}</span>
+            <span className="input-error">{formik.errors.lastName}</span>
           ) : null}
           <div className="flex align-center signup-input-ctn">
             <FaSignature className="signup-icon" />
@@ -121,7 +121,7 @@ const Signup = () => {
             />
           </div>
           {formik.touched.email && formik.errors.email ? (
-            <span className="signup-error">{formik.errors.email}</span>
+            <span className="input-error">{formik.errors.email}</span>
           ) : null}
 
           <div className="flex align-center signup-input-ctn">
@@ -137,7 +137,7 @@ const Signup = () => {
             />
           </div>
           {formik.touched.password && formik.errors.password ? (
-            <span className="signup-error">{formik.errors.password}</span>
+            <span className="input-error">{formik.errors.password}</span>
           ) : null}
           <div className="flex align-center signup-input-ctn">
             <FaUnlock className="signup-icon" />
@@ -152,7 +152,7 @@ const Signup = () => {
             />
           </div>
           {formik.touched.rePassword && formik.errors.rePassword ? (
-            <span className="signup-error">{formik.errors.rePassword}</span>
+            <span className="input-error">{formik.errors.rePassword}</span>
           ) : null}
           <div className="flex align-center signup-input-ctn">
             <FaLock className="signup-icon" />

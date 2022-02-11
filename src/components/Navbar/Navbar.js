@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="nav-bar">
         {sidenav ? (
           <ImCross
-            className="hamburger"
+            className="cross"
             onClick={() => dispatch(handleClick(!sidenav))}
           />
         ) : (

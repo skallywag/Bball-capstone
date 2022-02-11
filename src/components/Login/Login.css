@@ -3,11 +3,16 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 10px;
-  height: 40vh;
-  width: 35vw;
-  background: rgba(29, 28, 28, 0.877);
-  /* background: rgba(41, 41, 41, 0.856); */
-
+  /* height: 40vh; */
+  /* width: 35vw; */
+  position: relative;
+  padding: 60px 100px;
+  background: rgb(77, 77, 77);
+  background: linear-gradient(
+    85deg,
+    rgba(77, 77, 77, 1) 0%,
+    rgba(34, 34, 34, 1) 80%
+  );
   -webkit-box-shadow: 0px 0px 38px 18px #1d1c1c;
   -moz-box-shadow: 0px 0px 38px 18px #202020;
   box-shadow: 0px 0px 38px 18px #1f1e1e;
@@ -20,6 +25,11 @@
   align-items: center;
 }
 
+.login-input-ctn {
+  position: relative;
+  /* margin-bottom: 15px; */
+}
+
 .login-input {
   margin-bottom: 30px;
   font-size: 30px;
@@ -27,32 +37,48 @@
   outline: none;
   height: 40px;
   border-radius: 10px;
+  padding-left: 40px;
+}
+
+.login-icon {
+  color: #cf5300;
+  font-size: 30px;
+  position: absolute;
+  top: 6px;
+  left: 6px;
 }
 
 .login-btn {
-  background-color: #cf5300;
-  color: black;
-  border-radius: 5px;
+  background: none;
   border-style: none;
-  font-size: 30px;
-  padding: 5px;
-  margin-right: 20px;
+  /* background-color: #cf5300; */
+}
+.login-btn-icon {
+  font-size: 50px;
+  color: #cf5300;
+}
+.login-btn-icon:hover {
+  cursor: pointer;
+  transition: 2s ease-in;
 }
 
 .close-login {
   font-size: 35px;
   position: absolute;
-  top: 31%;
-  right: 33.2%;
+  top: 3.5%;
+  right: 2.2%;
   cursor: pointer;
   color: #cf5300;
 }
 
 .login-q {
   position: absolute;
-  color: black;
-  bottom: 32%;
-  left: 44.6%;
+  color: white;
+  bottom: 5%;
+  left: 37.3%;
   font: 12px;
-  border-bottom: 1px solid black;
+}
+
+.login-q:hover {
+  border-bottom: 1px solid #cf5300;
 }

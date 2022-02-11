@@ -15,8 +15,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 35vw;
-  height: 60vh;
+  /* width: 35vw; */
+  /* height: 60vh; */
   border-radius: 20px;
   background: rgba(3, 3, 3, 0.856);
   margin-top: 70px;
@@ -46,17 +46,13 @@
   width: 170px;
   border-radius: 10px;
   border-style: none;
+  color: #cf5300;
 }
 
 .signup-btn:hover {
-  background-color: blue;
+  background-color: #cf5300;
+  color: black;
   cursor: pointer;
-}
-
-.signup-error {
-  color: #cf5300;
-  font-size: 15px;
-  text-align: left;
 }
 
 .signup-input-ctn {

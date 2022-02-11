@@ -2,17 +2,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(88, 87, 87);
+  /* background-color: rgb(88, 87, 87); */
   padding: 20px;
+
+  background: rgb(97, 97, 97);
+  background: linear-gradient(
+    0deg,
+    rgba(97, 97, 97, 1) 0%,
+    rgba(69, 68, 68, 1) 100%,
+    rgba(106, 106, 106, 1) 100%
+  );
 }
 
 .nav-title {
   font-size: 30px;
   color: #cf5300;
+  padding-left: 50px;
 }
 
 .hamburger {
   font-size: 30px;
+  cursor: pointer;
+}
+
+.cross {
+  font-size: 30px;
+  color: #cf5300;
   cursor: pointer;
 }
 
@@ -22,12 +37,11 @@
   border-radius: 5px;
   border-style: none;
   font-size: 30px;
-  padding: 5px;
-  margin-right: 20px;
-}
-
-.nav-login-btn:hover {
   cursor: pointer;
-  background-color: wheat;
+  /* padding: 5px; */
+  /* margin-right: 20px; */
+}
+.nav-login-btn:hover {
+  background-color: #cf5300;
   color: black;
 }

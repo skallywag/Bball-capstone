@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import teams from "./teamData";
 import "./Standings.css";
+const img = "https://wallpapercave.com/wp/wp7673086.jpg";
 
 const west = teams.filter((team) => {
   return team.Conference === "Western";
@@ -10,7 +11,6 @@ const west = teams.filter((team) => {
 const westRankings = west.sort((b, a) => {
   return a.Wins - b.Wins;
 });
-console.log(westRankings);
 
 const east = teams.filter((team) => {
   return team.Conference === "Eastern";
@@ -24,6 +24,7 @@ const Standings = () => {
   const [standings, setStandings] = useState(westRankings);
   return (
     <div className="standings-con">
+      <img className="back-img" src={img} alt="" />
       <div className="toggle-btn-con">
         <button
           onClick={() => setStandings(westRankings)}
@@ -58,7 +59,12 @@ const Standings = () => {
             {standings.map((team, idx) => (
               <tr key={team.TeamID}>
                 <td>
-                  {idx}-{team.Name}
+                  <img
+                    alt="logo"
+                    className="nba-logo"
+                    src={`/nbaIcons/${team.Name}.png`}
+                  />
+                  {team.Name}
                 </td>
                 <td>{team.Wins}</td>
                 <td>{team.Losses}</td>

@@ -6,9 +6,6 @@
   padding: 20px;
 }
 
-.input-con {
-}
-
 .search-bar {
   /* margin-top: 40px; */
   font-size: 35px;
@@ -16,7 +13,11 @@
   outline: none;
   border-style: none;
   font-weight: 900;
-  padding: 10px;
+  width: 30vw;
+  padding-left: 60px;
+}
+.search-bar-ctn {
+  position: relative;
 }
 
 .create-btn {
@@ -26,4 +27,12 @@
   border-radius: 5px;
   border-style: none;
   margin-bottom: 30px;
+}
+
+.search-icon {
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  font-size: 50px;
+  color: #cf5300;
 }

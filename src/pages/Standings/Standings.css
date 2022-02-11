@@ -2,14 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: blue;
+  /* background-color: blue; */
   height: 100vh;
 }
 
 .table-con {
-  background-color: wheat;
-  width: 60vw;
-  /* padding: 20px; */
+  background-color: silver;
+  /* width: 50vw; */
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 40vw;
 }
 
 table {
@@ -21,26 +23,44 @@ th,
 td {
   border-bottom: 1px solid red;
   text-align: left;
-  padding: 8px;
-  font-size: 25px;
+  padding: 5px;
+  font-size: 22px;
 }
 
 th {
-  background-color: burlywood;
+  background-color: rgb(138, 137, 137);
   /* font-size: 30px; */
 }
 
 .toggle-btn {
-  background-color: orange;
-  border-radius: 5px;
-  border-style: none;
+  background-color: silver;
+  border: 1px solid white;
+  /* border-style: none; */
   font-size: 30px;
   font-weight: 900;
   padding: 5px 15px;
 }
 
+.toggle-btn:hover {
+  cursor: pointer;
+}
+
 .toggle-btn-con {
   display: flex;
   gap: 20px;
-  padding: 20px;
+  padding: 10px;
+}
+
+.back-img {
+  z-index: -2;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nba-logo {
+  width: 30px;
+  height: 25px;
+  margin-right: 5px;
+  object-fit: contain;
 }

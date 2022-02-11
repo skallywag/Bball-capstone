@@ -4,6 +4,11 @@
 .align-center {
   align-items: center;
 }
+.input-error {
+  color: #cf5300;
+  font-size: 15px;
+  align-self: flex-start;
+}
 
 html,
 body,
