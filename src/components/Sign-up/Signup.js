@@ -1,5 +1,16 @@
 import React from "react";
+
 import { useFormik } from "formik";
+
+import {
+  FaUserTag,
+  FaUserTie,
+  FaSignature,
+  FaUnlock,
+  FaLock,
+} from "react-icons/fa";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+
 import "./Signup.css";
 
 const Signup = () => {
@@ -62,78 +73,99 @@ const Signup = () => {
           {formik.errors.userName ? (
             <span className="signup-error">{formik.errors.userName}</span>
           ) : null}
-          <input
-            value={formik.values.userName}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            id="userName"
-            type="text"
-            placeholder=" &#xf434; Username"
-            className="signup-input"
-          />
+          <div className="flex align-center signup-input-ctn">
+            <FaUserTag className="signup-icon" />
+            <input
+              value={formik.values.userName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              id="userName"
+              type="text"
+              placeholder="Username"
+              className="signup-input"
+            />
+          </div>
 
           <div>
             {formik.touched.firstName && formik.errors.firstName ? (
               <span className="signup-error">{formik.errors.firstName}</span>
             ) : null}
           </div>
-          <input
-            value={formik.values.firstName}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            id="firstName"
-            type="text"
-            placeholder=" &#xf007; First Name"
-            className="signup-input"
-          />
+
+          <div className="flex align-center signup-input-ctn">
+            <FaUserTie className="signup-icon" />
+            <input
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              id="firstName"
+              type="text"
+              placeholder=" First Name"
+              className="signup-input"
+            />
+          </div>
+
           {formik.touched.lastName && formik.errors.lastName ? (
             <span className="signup-error">{formik.errors.lastName}</span>
           ) : null}
-          <input
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            id="lastName"
-            type="text"
-            placeholder=" &#xf508; Last Name"
-            className="signup-input"
-          />
+          <div className="flex align-center signup-input-ctn">
+            <FaSignature className="signup-icon" />
+            <input
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              id="lastName"
+              type="text"
+              placeholder="Last Name"
+              className="signup-input"
+            />
+          </div>
           {formik.touched.email && formik.errors.email ? (
             <span className="signup-error">{formik.errors.email}</span>
           ) : null}
-          <input
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            id="email"
-            type="text"
-            placeholder=" &#xf1fa; Email"
-            className="signup-input"
-          />
+
+          <div className="flex align-center signup-input-ctn">
+            <MdOutlineAlternateEmail className="signup-icon" />
+            <input
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              id="email"
+              type="text"
+              placeholder="Email"
+              className="signup-input"
+            />
+          </div>
           {formik.touched.password && formik.errors.password ? (
             <span className="signup-error">{formik.errors.password}</span>
           ) : null}
-          <input
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            id="password"
-            type="password"
-            placeholder=" &#xf09c; Password"
-            className="signup-input"
-          />
+          <div className="flex align-center signup-input-ctn">
+            <FaUnlock className="signup-icon" />
+            <input
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              id="password"
+              type="password"
+              placeholder="Password"
+              className="signup-input"
+            />
+          </div>
           {formik.touched.rePassword && formik.errors.rePassword ? (
             <span className="signup-error">{formik.errors.rePassword}</span>
           ) : null}
-          <input
-            value={formik.values.rePassword}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            id="rePassword"
-            type="password"
-            placeholder=" &#xf023; Confirm Password"
-            className="signup-input"
-          />
+          <div className="flex align-center signup-input-ctn">
+            <FaLock className="signup-icon" />
+            <input
+              value={formik.values.rePassword}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              id="rePassword"
+              type="password"
+              placeholder="Confirm Password"
+              className="signup-input"
+            />
+          </div>
           <button type="submit" className="signup-btn">
             Lets Hoop
           </button>

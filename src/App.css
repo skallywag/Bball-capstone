@@ -1,3 +1,10 @@
+.flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+
 html,
 body,
 div,
@@ -51,14 +58,14 @@ fieldset,
 form,
 label,
 legend,
-table,
+/* table, */
 caption,
-tbody,
+/* tbody,
 tfoot,
 thead,
 tr,
 th,
-td,
+td, */
 article,
 aside,
 canvas,
@@ -100,14 +107,14 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
   background-color: darkgray;
-  /* font-family: "Righteous", cursive; */
-  font-family: "Staatliches", cursive;
 }
-* {
-  font-family: FontAwesome;
+body,
+html * {
+  font-family: "Staatliches", cursive !important;
 }
 ol,
 ul {
