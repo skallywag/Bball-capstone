@@ -1,30 +1,32 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import newsResponse from "./newsData";
+import newsResponse from "./newsData";
 import "./News.css";
 
 const News = () => {
   const [news, setNews] = useState([]);
-  useEffect(() => {
-    async function getNews() {
-      try {
-        const response = await axios.get();
-        const newsData = response.data;
-        // console.log(newsData);
-        setNews(newsData);
-      } catch {
-        console.error();
-      }
-    }
-    getNews();
-  }, []);
+  // useEffect(() => {
+  //   async function getNews() {
+  //     try {
+  //       const response = await axios.get(
+  //
+  //       );
+  //       const newsData = response.data;
+  //       // console.log(newsData);
+  //       setNews(newsData);
+  //     } catch {
+  //       console.error();
+  //     }
+  //   }
+  //   getNews();
+  // }, []);
 
   return (
     <div className="news-con">
       {/* <h1 className="news-title">Latest News</h1> */}
       <div className="card-con">
-        {news.map((newsCard) => {
+        {newsResponse.map((newsCard) => {
           return (
             <div key={newsCard.NewsID} className="news-card">
               <div className="img-con">
@@ -48,7 +50,11 @@ const News = () => {
                 <span className="content-update">
                   Last update: {newsCard.TimeAgo}
                 </span>
-                <a href="" style={{ color: "white" }}>
+                <a
+                  href={newsCard.Url}
+                  style={{ color: "white" }}
+                  target="blank"
+                >
                   Read full story here:
                 </a>
               </div>
