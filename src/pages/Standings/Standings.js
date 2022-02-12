@@ -22,6 +22,20 @@ const eastRankings = east.sort((b, a) => {
 
 const Standings = () => {
   const [standings, setStandings] = useState(westRankings);
+
+  // useEffect(() => {
+  //   async function getStandings() {
+  //     try {
+  //       const response = await axios.get(
+
+  //       );
+  //       const teams = response.data;
+
+  //     } catch {
+  //       console.error();
+  //     }
+  //   }
+  // }, []);
   return (
     <div className="standings-con">
       <img className="back-img" src={img} alt="" />

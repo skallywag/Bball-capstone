@@ -1,3 +1,10 @@
+.nav-wrapper {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
