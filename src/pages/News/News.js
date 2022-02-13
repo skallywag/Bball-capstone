@@ -16,7 +16,7 @@ const News = () => {
   //       // console.log(newsData);
   //       setNews(newsData);
   //     } catch {
-  //       console.error();
+  //       console.error()
   //     }
   //   }
   //   getNews();

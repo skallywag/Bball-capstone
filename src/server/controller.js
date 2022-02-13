@@ -1,9 +1,3 @@
-require("dotenv").config();
-
-
-
-
-
-module.exports {
-    
-}
+module.exports = {
+  createUser: async (req, res) => {},
+};

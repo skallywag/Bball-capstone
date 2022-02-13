@@ -107,18 +107,3 @@ const Standings = () => {
 };
 
 export default Standings;
-
-// const [standings, setStandings] = useState([]);
-
-// setStandings([...standings, response]);
-// useEffect(() => {
-//   async function getStandings() {
-//     try {
-//       const res = await axios.get(
-//
-//       );
-//     } catch {
-//       console.error("Request failed");
-//     }
-//   }
-// }, []);
