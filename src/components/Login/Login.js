@@ -39,11 +39,6 @@ const Login = ({ show, setShowLogin, logFunction }) => {
         .then((res) => {
           console.log(res.data);
           localStorage.setItem("user", JSON.stringify(res.data));
-
-          // localStorage.setItem("username", res.data.userName);
-          // localStorage.setItem("firstname", res.data.firstName);
-          // localStorage.setItem("lastname", res.data.lastName);
-          // localStorage.setItem("email", res.data.email);
           logFunction();
           setShowLogin(false);
           navigate("/profile");

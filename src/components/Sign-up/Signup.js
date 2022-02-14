@@ -186,7 +186,7 @@ const Signup = () => {
           <button type="submit" className="signup-btn">
             Lets Hoop
           </button>
-          <span style={{ color: "white" }}>Account Created!</span>
+          <span style={{ color: "white" }}>boob</span>
         </div>
       </form>
     </div>
