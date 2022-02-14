@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { ImKey } from "react-icons/im";
@@ -6,8 +7,10 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const Login = ({ show, setShowLogin }) => {
+const Login = ({ show, setShowLogin, logFunction }) => {
+  let navigate = useNavigate();
   const validate = (values) => {
     const errors = {};
     let emailRegex = new RegExp(
@@ -31,9 +34,17 @@ const Login = ({ show, setShowLogin }) => {
       loginPass: "",
     },
     onSubmit: (values, { resetForm }) => {
-      alert(JSON.stringify(values, null, 2));
+      axios
+        .post("http://localhost:5432/login", values)
+        .then((res) => {
+          localStorage.setItem("username", res.data.username);
+          localStorage.setItem("firstname", res.data.firstname);
+          logFunction();
+          setShowLogin(false);
+          navigate("/profile");
+        })
+        .catch((err) => console.log(err.response.data));
       resetForm({ values: "" });
-      setShowLogin(false);
     },
     validate,
   });

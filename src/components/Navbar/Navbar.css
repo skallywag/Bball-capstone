@@ -52,3 +52,26 @@
   background-color: #cf5300;
   color: black;
 }
+
+.profile-icon {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.profile-icon:hover {
+  color: #cf5300;
+}
+
+.nav-logout-btn {
+  background-color: black;
+  color: #cf5300;
+  border-radius: 5px;
+  border-style: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.logged-in-ctn {
+  display: flex;
+  gap: 20px;
+}

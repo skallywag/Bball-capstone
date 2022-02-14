@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import "./Signup.css";
+import axios from "axios";
 
 const Signup = () => {
   const validate = (values) => {
@@ -50,6 +51,7 @@ const Signup = () => {
     } else if (values.rePassword !== values.password) {
       errors.rePassword = "Passwords dont match";
     }
+
     return errors;
   };
   const formik = useFormik({
@@ -62,7 +64,14 @@ const Signup = () => {
       rePassword: "",
     },
     onSubmit: (values, { resetForm }) => {
-      alert(JSON.stringify(values, null, 2));
+      axios
+        .post("http://localhost:5432/register", values)
+        .then((res) => {
+          localStorage.setItem("user", JSON.stringify(res.data));
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
       resetForm({ values: "" });
     },
     validate,
@@ -177,6 +186,7 @@ const Signup = () => {
           <button type="submit" className="signup-btn">
             Lets Hoop
           </button>
+          <span style={{ color: "white" }}>Account Created!</span>
         </div>
       </form>
     </div>

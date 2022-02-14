@@ -1,11 +1,17 @@
 /* .news-con {
-  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } */
 
 .card-con {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.news-title {
+  align-self: center;
 }
 
 .news-card {

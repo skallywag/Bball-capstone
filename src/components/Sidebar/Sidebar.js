@@ -28,6 +28,7 @@ const Sidebar = () => {
             </Link>
           );
         })}
+        <Link to="/profile">Dashboard</Link>
       </ul>
       <div className="social-con">
         <a className="social-link" href="https://facebook.com" target="blank">

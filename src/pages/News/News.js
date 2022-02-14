@@ -24,8 +24,8 @@ const News = () => {
 
   return (
     <div className="news-con">
-      {/* <h1 className="news-title">Latest News</h1> */}
       <div className="card-con">
+        {/* <h1 className="news-title">Latest News</h1> */}
         {newsResponse.map((newsCard) => {
           return (
             <div key={newsCard.NewsID} className="news-card">

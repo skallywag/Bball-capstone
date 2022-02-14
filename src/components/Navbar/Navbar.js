@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 import { handleClick } from "../../Redux/sidenav";
 import { FaBars } from "react-icons/fa";
@@ -9,7 +10,7 @@ import Login from "../Login/Login";
 import "./Navbar.css";
 import { useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
   const [showLogin, setShowLogin] = useState(false);
   const { sidenav } = useSelector((state) => state.sidenav);
   const dispatch = useDispatch();
@@ -32,15 +33,30 @@ const Navbar = () => {
           />
         )}
         <h1 className="nav-title">{pageTitle ? pageTitle : "Shwifty Hoops"}</h1>
-        {/* <CgProfile
-          className="three-dots"
-          onClick={() => alert("working")}
-        ></CgProfile> */}
-        <button onClick={() => setShowLogin(true)} className="nav-login-btn">
-          Login
-        </button>
+
+        {isLoggedIn ? (
+          <div className="logged-in-ctn">
+            <Link style={{ fontStyle: "none", color: "black" }} to="profile">
+              <CgProfile className="profile-icon"></CgProfile>
+            </Link>
+            <button
+              className="nav-logout-btn"
+              onClick={() => setIsLoggedIn(!true)}
+            >
+              Log-out
+            </button>
+          </div>
+        ) : (
+          <button onClick={() => setShowLogin(true)} className="nav-login-btn">
+            Login
+          </button>
+        )}
       </div>
-      <Login show={showLogin} setShowLogin={setShowLogin} />
+      <Login
+        show={showLogin}
+        setShowLogin={setShowLogin}
+        logFunction={logFunction}
+      />
     </div>
   );
 };
