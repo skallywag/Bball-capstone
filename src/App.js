@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
@@ -16,6 +17,13 @@ import "./App.css";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const loginUser = () => setIsLoggedIn(!isLoggedIn);
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
   return (
     <Router>
       {/* <div style={{ display: "flex", flexDirection: "column", height: "100%" }}> */}
@@ -25,7 +33,7 @@ function App() {
         logFunction={loginUser}
       />
       {/* <div style={{ display: "flex", background: "red", height: "100%" }}> */}
-      <Sidebar />
+      <Sidebar isLoggedIn={isLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />

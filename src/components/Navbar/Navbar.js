@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-// import { useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { handleClick } from "../../Redux/sidenav";
 import { FaBars } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
@@ -13,10 +12,17 @@ import { useLocation } from "react-router-dom";
 const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
   const [showLogin, setShowLogin] = useState(false);
   const { sidenav } = useSelector((state) => state.sidenav);
-  const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const location = useLocation();
   let pageTitle = location.pathname.split("/")[1];
+
+  const userLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(!true);
+    navigate("/");
+  };
 
   return (
     <div className="nav-wrapper">
@@ -39,10 +45,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
             <Link style={{ fontStyle: "none", color: "black" }} to="profile">
               <CgProfile className="profile-icon"></CgProfile>
             </Link>
-            <button
-              className="nav-logout-btn"
-              onClick={() => setIsLoggedIn(!true)}
-            >
+            <button className="nav-logout-btn" onClick={userLogout}>
               Log-out
             </button>
           </div>

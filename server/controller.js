@@ -47,14 +47,14 @@ module.exports = {
     SELECT * FROM users WHERE '${loginEmail}' = email`);
     if (validateUser[1].rowCount === 1) {
       if (bcrypt.compareSync(loginPass, validateUser[0][0].password)) {
-        let user = {
+        let userInfo = {
           id: validateUser[0][0].id,
-          username: validateUser[0][0].username,
+          userName: validateUser[0][0].username,
           firstName: validateUser[0][0].firstname,
           lastName: validateUser[0][0].lastname,
           email: validateUser[0][0].email,
         };
-        res.status(200).send(user);
+        res.status(200).send(userInfo);
       } else {
         res.status(401).send("Password is incorrect");
       }

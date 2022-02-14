@@ -9,7 +9,7 @@ import { GrFacebook } from "react-icons/gr";
 import { GrTwitter } from "react-icons/gr";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ isLoggedIn }) => {
   const { sidenav } = useSelector((state) => state.sidenav);
   const dispatch = useDispatch();
 
@@ -28,7 +28,15 @@ const Sidebar = () => {
             </Link>
           );
         })}
-        <Link to="/profile">Dashboard</Link>
+        {isLoggedIn && (
+          <Link
+            onClick={() => dispatch(handleLinkChange())}
+            className="nav-link"
+            to="/profile"
+          >
+            <li>Dashboard</li>
+          </Link>
+        )}
       </ul>
       <div className="social-con">
         <a className="social-link" href="https://facebook.com" target="blank">
