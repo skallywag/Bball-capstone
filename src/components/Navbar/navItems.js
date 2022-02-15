@@ -24,11 +24,6 @@ const navItems = [
     url: "/about",
     cName: "nav-link",
   },
-  {
-    title: "Sign up",
-    url: "/signup",
-    cName: "nav-link",
-  },
 ];
 
 export default navItems;

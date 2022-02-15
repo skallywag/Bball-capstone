@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useFormik } from "formik";
 import {
   FaUserTag,
@@ -9,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import "./Signup.css";
-import axios from "axios";
 
 const Signup = () => {
   const validate = (values) => {

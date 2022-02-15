@@ -1,12 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { handleLinkChange } from "../../Redux/sidenav";
-import navItems from "../Navbar/navItems";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { GrInstagram } from "react-icons/gr";
-import { GrFacebook } from "react-icons/gr";
-import { GrTwitter } from "react-icons/gr";
+import navItems from "../Navbar/navItems";
+import { handleLinkChange } from "../../Redux/sidenav";
+import { useDispatch, useSelector } from "react-redux";
+import { GrInstagram, GrFacebook, GrTwitter } from "react-icons/gr";
 import "./Sidebar.css";
 
 const Sidebar = ({ isLoggedIn }) => {
@@ -28,13 +25,21 @@ const Sidebar = ({ isLoggedIn }) => {
             </Link>
           );
         })}
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <Link
             onClick={() => dispatch(handleLinkChange())}
             className="nav-link"
             to="/profile"
           >
             <li>Dashboard</li>
+          </Link>
+        ) : (
+          <Link
+            onClick={() => dispatch(handleLinkChange())}
+            className="nav-link"
+            to="/signup"
+          >
+            <li>Sign Up</li>
           </Link>
         )}
       </ul>

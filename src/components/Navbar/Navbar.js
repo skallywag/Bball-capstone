@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { handleClick } from "../../Redux/sidenav";
 import { FaBars } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { ImCross } from "react-icons/im";
 import Login from "../Login/Login";
 import "./Navbar.css";
-import { useLocation } from "react-router-dom";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
   const [showLogin, setShowLogin] = useState(false);
@@ -38,7 +37,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
             onClick={() => dispatch(handleClick(!sidenav))}
           />
         )}
-        <h1 className="nav-title">{pageTitle ? pageTitle : "Shwifty Hoops"}</h1>
+        <h1 className="nav-title">{pageTitle ? pageTitle : "Eternal Hoops"}</h1>
 
         {isLoggedIn ? (
           <div className="logged-in-ctn">

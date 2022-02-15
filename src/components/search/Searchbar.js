@@ -3,6 +3,7 @@ import { IoMdBasketball } from "react-icons/io";
 import "./Searchbar.css";
 
 const SearchBar = () => {
+  // Dbounce = lodash
   return (
     <div className="search-con">
       <button className="create-btn">Create Game</button>

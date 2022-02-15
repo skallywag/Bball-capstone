@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import newsResponse from "./newsData";
 import "./News.css";
 

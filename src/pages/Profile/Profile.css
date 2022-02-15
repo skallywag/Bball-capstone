@@ -1,0 +1,47 @@
+.dashboard-con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prof-card {
+  margin-top: 80px;
+  border-bottom: 20px;
+  width: 40vw;
+}
+.prof-info-con {
+  background-color: rgb(53, 52, 52);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 20px;
+}
+
+.prof-img-con {
+  display: flex;
+  justify-content: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: rgb(26, 25, 25);
+}
+
+.prof-img-icon {
+  font-size: 60px;
+  margin: 30px auto;
+  color: #cf5300;
+}
+
+.prof-actions {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100px;
+  margin-left: 5px;
+  background-color: #cf5300;
+  border-radius: 10px;
+  line-height: 25px;
+}
+
+.edit-link {
+  text-decoration: none;
+  text-align: center;
+}

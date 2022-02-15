@@ -1,13 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useFormik } from "formik";
+import { useNavigate, Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { ImKey } from "react-icons/im";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
 import "./Login.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
 
 const Login = ({ show, setShowLogin, logFunction }) => {
   let navigate = useNavigate();
@@ -37,7 +36,7 @@ const Login = ({ show, setShowLogin, logFunction }) => {
       axios
         .post("http://localhost:5432/login", values)
         .then((res) => {
-          console.log(res.data);
+          localStorage.removeItem("user");
           localStorage.setItem("user", JSON.stringify(res.data));
           logFunction();
           setShowLogin(false);
