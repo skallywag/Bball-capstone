@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import {
   FaUserTag,
@@ -12,6 +13,8 @@ import { MdOutlineAlternateEmail } from "react-icons/md";
 import "./Signup.css";
 
 const Signup = () => {
+  const [acctCreated, setAcctCreated] = useState(false);
+  // const navigate = useNavigate();
   const validate = (values) => {
     let errors = {};
     let emailRegex = new RegExp(
@@ -63,15 +66,19 @@ const Signup = () => {
       password: "",
       rePassword: "",
     },
-    onSubmit: (values, { resetForm }) => {
-      axios
-        .post("http://localhost:5432/register", values)
-        .then((res) => {
-          localStorage.setItem("user", JSON.stringify(res.data));
-        })
-        .catch((err) => {
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await axios.post(
+          "http://localhost:5432/register",
+          values
+        );
+        // console.log(response.data);
+        setAcctCreated(response.data);
+      } catch {
+        console.error((err) => {
           console.log(err.response.data);
         });
+      }
       resetForm({ values: "" });
     },
     validate,
@@ -186,7 +193,9 @@ const Signup = () => {
           <button type="submit" className="signup-btn">
             Lets Hoop
           </button>
-          <span style={{ color: "white" }}>boob</span>
+          {acctCreated ? (
+            <span style={{ color: "white" }}>Account Created!</span>
+          ) : null}
         </div>
       </form>
     </div>

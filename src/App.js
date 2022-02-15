@@ -15,7 +15,8 @@ import Profile from "./pages/Profile/Profile";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // set to currentUser
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const loginUser = () => setIsLoggedIn(!isLoggedIn);
   useEffect(() => {
     if (localStorage.getItem("user")) {

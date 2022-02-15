@@ -16,8 +16,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
   createUser: async (req, res) => {
     // console.log(req.body);
-    const { userName, firstName, lastName, email, password, rePassword } =
-      req.body;
+    const { userName, firstName, lastName, email, password } = req.body;
     const checkUser = await sequelize.query(
       `SELECT * FROM users WHERE username = '${userName}'`
     );
@@ -26,19 +25,18 @@ module.exports = {
     } else {
       const salt = bcrypt.genSaltSync(10);
       const passwordHash = bcrypt.hashSync(password, salt);
-      await sequelize.query(
+      const newUser = await sequelize.query(
         `INSERT INTO users(username, firstname, lastname, email, password)
       VALUES(
       '${userName}',
        '${firstName}',
         '${lastName}',
          '${email}',
-          '${passwordHash}')`
+          '${passwordHash}')
+        RETURNING id, firstname, lastname`
       );
-      const userInfo = await sequelize.query(
-        `SELECT id, username, firstname FROM users WHERE username = '${userName}'`
-      );
-      res.status(200).send(userInfo);
+      // console.log(newUser);
+      res.status(200).send(newUser[0][0]);
     }
   },
   userLogin: async (req, res) => {

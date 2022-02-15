@@ -32,17 +32,23 @@ const Login = ({ show, setShowLogin, logFunction }) => {
       loginEmail: "",
       loginPass: "",
     },
-    onSubmit: (values, { resetForm }) => {
-      axios
-        .post("http://localhost:5432/login", values)
-        .then((res) => {
-          localStorage.removeItem("user");
-          localStorage.setItem("user", JSON.stringify(res.data));
-          logFunction();
-          setShowLogin(false);
-          navigate("/profile");
-        })
-        .catch((err) => console.log(err.response.data));
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await axios.post(
+          "http://localhost:5432/login",
+          values
+        );
+        localStorage.removeItem("user");
+        localStorage.setItem("user", JSON.stringify(response.data));
+        logFunction();
+        setShowLogin(false);
+        navigate("/profile");
+      } catch {
+        console.error((err) => {
+          console.log(err.response.data);
+        });
+      }
+
       resetForm({ values: "" });
     },
     validate,
