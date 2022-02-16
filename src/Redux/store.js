@@ -3,6 +3,6 @@ import sideNavReducer from "./sidenav";
 
 export default configureStore({
   reducer: {
-    sidenav: sideNavReducer,
+    showSideNav: sideNavReducer,
   },
 });

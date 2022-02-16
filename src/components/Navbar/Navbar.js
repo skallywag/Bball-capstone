@@ -10,7 +10,7 @@ import "./Navbar.css";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
   const [showLogin, setShowLogin] = useState(false);
-  const { sidenav } = useSelector((state) => state.sidenav);
+  const { showSideNav } = useSelector((state) => state.showSideNav);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -26,15 +26,15 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
   return (
     <div className="nav-wrapper">
       <div className="nav-bar">
-        {sidenav ? (
+        {showSideNav ? (
           <ImCross
             className="cross"
-            onClick={() => dispatch(handleClick(!sidenav))}
+            onClick={() => dispatch(handleClick(!showSideNav))}
           />
         ) : (
           <FaBars
             className="hamburger"
-            onClick={() => dispatch(handleClick(!sidenav))}
+            onClick={() => dispatch(handleClick(!showSideNav))}
           />
         )}
         <h1 className="nav-title">{pageTitle ? pageTitle : "Eternal Hoops"}</h1>

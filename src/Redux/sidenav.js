@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  sidenav: false,
+  showSideNav: false,
 };
 
 export const sidenavSlice = createSlice({
@@ -9,15 +9,16 @@ export const sidenavSlice = createSlice({
   initialState,
   reducers: {
     handleClick: (state, action) => {
-      state.sidenav = action.payload;
+      state.showSideNav = action.payload;
     },
     handleLinkChange: (state) => {
-      state.sidenav = false;
+      state.showSideNav = false;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { handleClick, sidenav, handleLinkChange } = sidenavSlice.actions;
+export const { handleClick, showSidenav, handleLinkChange } =
+  sidenavSlice.actions;
 
 export default sidenavSlice.reducer;

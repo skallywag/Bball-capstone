@@ -7,11 +7,11 @@ import { GrInstagram, GrFacebook, GrTwitter } from "react-icons/gr";
 import "./Sidebar.css";
 
 const Sidebar = ({ isLoggedIn }) => {
-  const { sidenav } = useSelector((state) => state.sidenav);
+  const { showSideNav } = useSelector((state) => state.showSideNav);
   const dispatch = useDispatch();
 
   return (
-    <div className={`side-bar ${sidenav ? "show" : "hide"}`}>
+    <div className={`side-bar ${showSideNav ? "show" : "hide"}`}>
       <ul className="nav-links">
         {navItems.map((item, idx) => {
           return (
