@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setIsLoggedIn } from "./Redux/app";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import ErrorPage from "./pages/Error/ErrorPage";
@@ -16,26 +16,21 @@ import Profile from "./pages/Profile/Profile";
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
   // set to currentUser
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const loginUser = () => setIsLoggedIn(!isLoggedIn);
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      setIsLoggedIn(true);
+      dispatch(setIsLoggedIn(true));
     } else {
-      setIsLoggedIn(false);
+      dispatch(setIsLoggedIn(false));
     }
   }, []);
   return (
     <Router>
       {/* <div style={{ display: "flex", flexDirection: "column", height: "100%" }}> */}
-      <Navbar
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        logFunction={loginUser}
-      />
+      <Navbar />
       {/* <div style={{ display: "flex", background: "red", height: "100%" }}> */}
-      <Sidebar isLoggedIn={isLoggedIn} />
+      <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />

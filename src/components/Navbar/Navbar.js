@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { handleClick } from "../../Redux/sidenav";
+import { toggleSideNav, setIsLoggedIn } from "../../Redux/app";
 import { FaBars } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { ImCross } from "react-icons/im";
 import Login from "../Login/Login";
 import "./Navbar.css";
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
+const Navbar = ({ logFunction }) => {
   const [showLogin, setShowLogin] = useState(false);
   const { showSideNav } = useSelector((state) => state.showSideNav);
+  const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
 
   const userLogout = () => {
     localStorage.removeItem("user");
-    setIsLoggedIn(!true);
+    dispatch(setIsLoggedIn(!true));
     navigate("/");
   };
 
@@ -29,12 +30,12 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
         {showSideNav ? (
           <ImCross
             className="cross"
-            onClick={() => dispatch(handleClick(!showSideNav))}
+            onClick={() => dispatch(toggleSideNav(!showSideNav))}
           />
         ) : (
           <FaBars
             className="hamburger"
-            onClick={() => dispatch(handleClick(!showSideNav))}
+            onClick={() => dispatch(toggleSideNav(!showSideNav))}
           />
         )}
         <h1 className="nav-title">{pageTitle ? pageTitle : "Eternal Hoops"}</h1>
@@ -55,7 +56,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, logFunction }) => {
         )}
       </div>
       <Login
-        show={showLogin}
+        showLogin={showLogin}
         setShowLogin={setShowLogin}
         logFunction={logFunction}
       />

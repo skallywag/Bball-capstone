@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../Redux/app";
 import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -8,7 +10,8 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
 import "./Login.css";
 
-const Login = ({ show, setShowLogin, logFunction }) => {
+const Login = ({ showLogin, setShowLogin, logFunction }) => {
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const validate = (values) => {
     const errors = {};
@@ -40,7 +43,7 @@ const Login = ({ show, setShowLogin, logFunction }) => {
         );
         localStorage.removeItem("user");
         localStorage.setItem("user", JSON.stringify(response.data));
-        logFunction();
+        dispatch(loginUser());
         setShowLogin(false);
         navigate("/profile");
       } catch {
@@ -54,7 +57,7 @@ const Login = ({ show, setShowLogin, logFunction }) => {
     validate,
   });
   return (
-    <div className={`overlay ${show ? "show" : "hide"}`}>
+    <div className={`overlay ${showLogin ? "show" : "hide"}`}>
       <div className="login-con">
         <AiFillCloseCircle
           className="close-login"

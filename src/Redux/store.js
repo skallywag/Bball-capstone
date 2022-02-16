@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sideNavReducer from "./sidenav";
+import appReducer from "./app";
 
 export default configureStore({
   reducer: {
-    showSideNav: sideNavReducer,
+    showSideNav: appReducer,
+    isLoggedIn: appReducer,
   },
 });

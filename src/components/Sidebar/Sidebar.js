@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import navItems from "../Navbar/navItems";
-import { handleLinkChange } from "../../Redux/sidenav";
 import { useDispatch, useSelector } from "react-redux";
+import { closeSideNav } from "../../Redux/app";
+import navItems from "../Navbar/navItems";
 import { GrInstagram, GrFacebook, GrTwitter } from "react-icons/gr";
 import "./Sidebar.css";
 
-const Sidebar = ({ isLoggedIn }) => {
+const Sidebar = () => {
   const { showSideNav } = useSelector((state) => state.showSideNav);
+  const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
 
   return (
@@ -16,7 +17,7 @@ const Sidebar = ({ isLoggedIn }) => {
         {navItems.map((item, idx) => {
           return (
             <Link
-              onClick={() => dispatch(handleLinkChange())}
+              onClick={() => dispatch(closeSideNav())}
               to={item.url}
               key={idx}
               className={item.cName}
@@ -27,7 +28,7 @@ const Sidebar = ({ isLoggedIn }) => {
         })}
         {isLoggedIn ? (
           <Link
-            onClick={() => dispatch(handleLinkChange())}
+            onClick={() => dispatch(closeSideNav())}
             className="nav-link"
             to="/profile"
           >
@@ -35,7 +36,7 @@ const Sidebar = ({ isLoggedIn }) => {
           </Link>
         ) : (
           <Link
-            onClick={() => dispatch(handleLinkChange())}
+            onClick={() => dispatch(closeSideNav())}
             className="nav-link"
             to="/signup"
           >
