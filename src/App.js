@@ -11,6 +11,7 @@ import News from "./pages/News/News";
 import Standings from "./pages/Standings/Standings";
 import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
+import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
 import "./App.css";
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/create" element={<CreateGame />} />
         <Route path="/standings" element={<Standings />} />
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />

@@ -36,3 +36,7 @@
   font-size: 50px;
   color: #cf5300;
 }
+
+.create-btn {
+  cursor: pointer;
+}

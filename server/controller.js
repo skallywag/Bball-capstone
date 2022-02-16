@@ -63,8 +63,22 @@ module.exports = {
   getGames: async (req, res) => {
     const { input } = req.body;
     const games = await sequelize.query(
-      `SELECT * FROM game WHERE '${input}' = game_zipcode`
+      `SELECT * FROM game WHERE '${input}' = game_state OR '${input}' = game_city OR '${input}' OR '${input}' = game_zipcode`
     );
     res.status(200).send(games[0]);
+  },
+  createGame: async (req, res) => {
+    const { venue, state, city, address, zipcode } = req.body;
+    const createGame = await sequelize.query(
+      `INSERT INTO game(game_venue, game_state, game_city, game_address, game_zipcode)
+      VALUES(
+        '${venue}',
+        '${state}',
+        '${city}',
+        '${address}',
+        '${zipcode}'
+      ) RETURNING id`
+    );
+    res.status(200).send(createGame[0][0]);
   },
 };

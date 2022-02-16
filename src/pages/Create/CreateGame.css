@@ -1,0 +1,25 @@
+.createGame-con {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+}
+
+.createGame-inputs-con {
+  background-color: blue;
+  padding: 10px;
+}
+
+.createGame-input-con {
+  margin-bottom: 10px;
+}
+
+.createGame-input {
+  outline: none;
+  font-size: 20px;
+  width: 500px;
+}
+
+.createGame-btn {
+  font-size: 25px;
+  width: 508px;
+}
