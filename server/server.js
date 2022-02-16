@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 4000;
 
 const app = express();
 
-const { createUser, userLogin } = require("./controller.js");
+const { createUser, userLogin, getGames } = require("./controller.js");
 
 app.use(express.json());
 app.use(cors());
@@ -14,6 +14,7 @@ app.use(cors());
 //Endpoints
 app.post("/register", createUser);
 app.post("/login", userLogin);
+app.post("/games", getGames);
 app.listen(PORT, () => {
   console.log(`Warped to ${PORT}`);
 });

@@ -60,4 +60,11 @@ module.exports = {
       res.status(401).send("Email is incorrect");
     }
   },
+  getGames: async (req, res) => {
+    const { input } = req.body;
+    const games = await sequelize.query(
+      `SELECT * FROM game WHERE '${input}' = game_zipcode`
+    );
+    res.status(200).send(games[0]);
+  },
 };

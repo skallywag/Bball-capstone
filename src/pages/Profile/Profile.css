@@ -31,17 +31,33 @@
 }
 
 .prof-actions {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  width: 100px;
-  margin-left: 5px;
   background-color: #cf5300;
+  margin-left: 5px;
+  line-height: 30px;
   border-radius: 10px;
-  line-height: 25px;
+  width: 170px;
+  text-align: center;
 }
 
-.edit-link {
+.img-action {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 4px 8px;
+  border-bottom: 1px solid black;
+}
+.edit-action {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 4px 8px;
+}
+.img-action:hover {
+  background-color: rgb(53, 52, 52);
+}
+.edit-action:hover {
+  background-color: rgb(53, 52, 52);
+}
+
+.prof-link {
   text-decoration: none;
-  text-align: center;
+  color: whitesmoke;
 }

@@ -65,6 +65,7 @@ const Login = ({ show, setShowLogin, logFunction }) => {
             {formik.touched.loginEmail && formik.errors.loginEmail ? (
               <span className="input-error">{formik.errors.loginEmail}</span>
             ) : null}
+
             <div className="flex align-center login-input-ctn">
               <MdAlternateEmail className="login-icon" />
               <input

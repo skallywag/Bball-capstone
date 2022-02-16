@@ -22,14 +22,14 @@ const Profile = () => {
           <h1>{user.email}</h1>
         </div>
       </div>
-      <div className="prof-actions">
-        <Link to="" className="edit-link">
-          Edit Profile
+      <ul className="prof-actions">
+        <Link to="" className="prof-link">
+          <li className="img-action">Upload Image</li>
         </Link>
-        <Link to="" className="edit-link">
-          Upload image
+        <Link to="" className="prof-link">
+          <li className="edit-action">Edit Profile</li>
         </Link>
-      </div>
+      </ul>
     </div>
   );
 };
