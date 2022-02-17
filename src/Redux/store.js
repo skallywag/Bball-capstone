@@ -5,5 +5,6 @@ export default configureStore({
   reducer: {
     showSideNav: appReducer,
     isLoggedIn: appReducer,
+    showLogin: appReducer,
   },
 });

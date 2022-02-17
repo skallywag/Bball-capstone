@@ -13,7 +13,7 @@ import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
 import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const dispatch = useDispatch();

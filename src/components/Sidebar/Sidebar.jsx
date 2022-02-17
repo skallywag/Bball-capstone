@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeSideNav } from "../../Redux/app";
 import navItems from "../Navbar/navItems";
 import { GrInstagram, GrFacebook, GrTwitter } from "react-icons/gr";
-import "./Sidebar.css";
+import "./Sidebar.scss";
 
 const Sidebar = () => {
   const { showSideNav } = useSelector((state) => state.showSideNav);

@@ -1,6 +1,6 @@
 import React from "react";
 import Searchbar from "../../components/searchGames/Searchbar";
-import "./Search.css";
+import "./Search.scss";
 
 const Search = () => {
   return (

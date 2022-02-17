@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import teams from "./teamData";
-import "./Standings.css";
+import "./Standings.scss";
 const img = "https://wallpapercave.com/wp/wp7673086.jpg";
 
 const west = teams.filter((team) => {

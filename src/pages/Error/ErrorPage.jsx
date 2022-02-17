@@ -1,5 +1,5 @@
 import React from "react";
-import "./ErrorPage.css";
+import "./ErrorPage.scss";
 
 const ErrorPage = () => {
   return <div className="error-title">Page Not Found</div>;

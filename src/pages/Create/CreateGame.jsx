@@ -1,9 +1,11 @@
 import React from "react";
-import { useFormik } from "formik";
-import "./CreateGame.css";
 import axios from "axios";
+import { useFormik } from "formik";
+import { useState } from "react";
+import "./CreateGame.scss";
 
 const CreateGame = () => {
+  const [gameCreated, setGameCreated] = useState("");
   const formik = useFormik({
     initialValues: {
       venue: "",
@@ -18,7 +20,7 @@ const CreateGame = () => {
           "http://localhost:5432/create",
           values
         );
-        console.log(response.data);
+        setGameCreated("Game Created!");
       } catch {
         console.error();
       }
@@ -27,9 +29,12 @@ const CreateGame = () => {
   });
   return (
     <div className="createGame-con">
+      {gameCreated ? <span className="gameCreated">{gameCreated}</span> : null}
       <form onSubmit={formik.handleSubmit}>
         <div className="createGame-inputs-con">
-          <label htmlFor="venue">Venue:</label>
+          <label className="createLabel" htmlFor="venue">
+            Venue:
+          </label>
 
           <div className="createGame-input-con">
             <input
@@ -41,7 +46,9 @@ const CreateGame = () => {
               className="createGame-input"
             />
           </div>
-          <label htmlFor="state">State:</label>
+          <label className="createLabel" htmlFor="state">
+            State:
+          </label>
           <div className="createGame-input-con">
             <input
               value={formik.values.state}
@@ -52,7 +59,9 @@ const CreateGame = () => {
               className="createGame-input"
             />
           </div>
-          <label htmlFor="city">City:</label>
+          <label className="createLabel" htmlFor="city">
+            City:
+          </label>
           <div className="createGame-input-con">
             <input
               value={formik.values.city}
@@ -63,7 +72,9 @@ const CreateGame = () => {
               className="createGame-input"
             />
           </div>
-          <label htmlFor="address">Address:</label>
+          <label className="createLabel" htmlFor="address">
+            Address:
+          </label>
           <div className="createGame-input-con">
             <input
               value={formik.values.address}
@@ -74,7 +85,9 @@ const CreateGame = () => {
               className="createGame-input"
             />
           </div>
-          <label htmlFor="zipcode">Zipcode:</label>
+          <label className="createLabel" htmlFor="zipcode">
+            Zipcode:
+          </label>
           <div className="createGame-input-con">
             <input
               value={formik.values.zipcode}

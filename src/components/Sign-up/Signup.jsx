@@ -10,7 +10,7 @@ import {
   FaLock,
 } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import "./Signup.css";
+import "./Signup.scss";
 
 const Signup = () => {
   const [acctCreated, setAcctCreated] = useState(false);

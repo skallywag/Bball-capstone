@@ -62,15 +62,19 @@ module.exports = {
   },
   getGames: async (req, res) => {
     const { input } = req.body;
+    //my Sub-optimal.
     const games = await sequelize.query(
-      `SELECT * FROM game WHERE '${input}' = game_state OR '${input}' = game_city OR '${input}' OR '${input}' = game_zipcode`
+      `SELECT * FROM game
+      WHERE state IN (SELECT state FROM game WHERE state = '${input}')
+      OR city IN (SELECT city FROM game WHERE city = '${input}')
+      OR zipcode IN (SELECT zipcode FROM game WHERE zipcode::char = '${input}')`
     );
     res.status(200).send(games[0]);
   },
   createGame: async (req, res) => {
     const { venue, state, city, address, zipcode } = req.body;
     const createGame = await sequelize.query(
-      `INSERT INTO game(game_venue, game_state, game_city, game_address, game_zipcode)
+      `INSERT INTO game(venue, state, city, address, zipcode)
       VALUES(
         '${venue}',
         '${state}',

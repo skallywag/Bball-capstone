@@ -1,0 +1,55 @@
+.createGame-con {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(26, 25, 25);
+}
+
+.createGame-inputs-con {
+  margin-top: 70px;
+  padding: 40px;
+  border-radius: 10px;
+  /* background: rgb(77, 77, 77); */
+  background: linear-gradient(
+    85deg,
+    rgba(77, 77, 77, 1) 0%,
+    rgba(34, 34, 34, 1) 80%
+  );
+  -webkit-box-shadow: 0px 0px 38px 18px #1d1c1c;
+  -moz-box-shadow: 0px 0px 38px 18px #202020;
+  box-shadow: 0px 0px 38px 18px #1f1e1e;
+}
+
+.createGame-input-con {
+  margin-bottom: 10px;
+}
+
+.createGame-input {
+  outline: none;
+  font-size: 20px;
+  width: 500px;
+}
+
+.createGame-btn {
+  cursor: pointer;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 25px;
+  width: 508px;
+}
+
+.createGame-btn:hover {
+  background-color: darkgray;
+  transition: 0.3s ease-in;
+}
+
+.createLabel {
+  color: #cf5300;
+}
+
+.gameCreated {
+  font-size: 40px;
+  position: absolute;
+  color: white;
+  margin-top: 20px;
+}

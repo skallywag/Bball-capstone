@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { toggleSideNav, setIsLoggedIn } from "../../Redux/app";
+import { toggleSideNav, setIsLoggedIn, setShowLogin } from "../../Redux/app";
 import { FaBars } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { ImCross } from "react-icons/im";
 import Login from "../Login/Login";
-import "./Navbar.css";
+import "./Navbar.scss";
 
-const Navbar = ({ logFunction }) => {
-  const [showLogin, setShowLogin] = useState(false);
+const Navbar = () => {
+  // const [showLogin, setShowLogin] = useState(false);
   const { showSideNav } = useSelector((state) => state.showSideNav);
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
 
@@ -50,16 +50,15 @@ const Navbar = ({ logFunction }) => {
             </button>
           </div>
         ) : (
-          <button onClick={() => setShowLogin(true)} className="nav-login-btn">
+          <button
+            onClick={() => dispatch(setShowLogin(true))}
+            className="nav-login-btn"
+          >
             Login
           </button>
         )}
       </div>
-      <Login
-        showLogin={showLogin}
-        setShowLogin={setShowLogin}
-        logFunction={logFunction}
-      />
+      <Login />
     </div>
   );
 };

@@ -1,30 +1,32 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../Redux/app";
+import { loginUser, showLogin } from "../../Redux/app";
+import { setShowLogin } from "../../Redux/app";
 import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { ImKey } from "react-icons/im";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
-import "./Login.css";
+import "./Login.scss";
+import { useSelector } from "react-redux";
 
-const Login = ({ showLogin, setShowLogin, logFunction }) => {
+const Login = () => {
+  const { showLogin } = useSelector((state) => state.showLogin);
   const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
   const validate = (values) => {
     const errors = {};
     let emailRegex = new RegExp(
       /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/g
     );
-
     if (!values.loginEmail) {
       errors.loginEmail = "*Required";
     } else if (!emailRegex.test(values.loginEmail)) {
       errors.loginEmail = "Please enter in a valid email";
     }
-
     if (!values.loginPass) {
       errors.loginPass = "*Required";
     }
@@ -44,7 +46,7 @@ const Login = ({ showLogin, setShowLogin, logFunction }) => {
         localStorage.removeItem("user");
         localStorage.setItem("user", JSON.stringify(response.data));
         dispatch(loginUser());
-        setShowLogin(false);
+        dispatch(setShowLogin(false));
         navigate("/profile");
       } catch {
         console.error((err) => {
@@ -61,7 +63,7 @@ const Login = ({ showLogin, setShowLogin, logFunction }) => {
       <div className="login-con">
         <AiFillCloseCircle
           className="close-login"
-          onClick={() => setShowLogin(false)}
+          onClick={() => dispatch(setShowLogin(false))}
         />
         <form onSubmit={formik.handleSubmit}>
           <div className="login-input-con">
@@ -106,7 +108,7 @@ const Login = ({ showLogin, setShowLogin, logFunction }) => {
             </button>
           </div>
         </form>
-        <Link to="signup" onClick={() => setShowLogin(false)}>
+        <Link to="signup" onClick={() => dispatch(setShowLogin(false))}>
           <span className="login-q">dont have an account?</span>
         </Link>
       </div>

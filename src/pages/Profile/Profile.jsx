@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFillCameraFill } from "react-icons/bs";
-import "./Profile.css";
+import "./Profile.scss";
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));

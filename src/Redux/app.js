@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   showSideNav: false,
   isLoggedIn: null,
+  showLogin: false,
 };
 
 export const appSlice = createSlice({
@@ -21,6 +22,9 @@ export const appSlice = createSlice({
     loginUser: (state) => {
       state.isLoggedIn = !isLoggedIn;
     },
+    setShowLogin: (state, action) => {
+      state.showLogin = action.payload;
+    },
   },
 });
 
@@ -32,6 +36,8 @@ export const {
   setIsLoggedIn,
   closeSideNav,
   loginUser,
+  setShowLogin,
+  showLogin,
 } = appSlice.actions;
 
 export default appSlice.reducer;
