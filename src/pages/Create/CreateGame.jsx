@@ -13,6 +13,9 @@ const CreateGame = () => {
       city: "",
       address: "",
       zipcode: "",
+      skill: "",
+      age: "",
+      duration: ""
     },
     onSubmit: async (values, { resetForm }) => {
       try {
@@ -98,6 +101,60 @@ const CreateGame = () => {
               className="createGame-input"
             />
           </div>
+
+           <label className="createLabel" htmlFor="skill">
+            Skill Level:
+          </label>
+          <div className="createGame-input-con">
+             <select
+                name="skill"
+                value={formik.values.skill}
+                onChange={formik.handleChange}
+                className="createGame-input"
+              >
+                <option value="" label="Select Skill" />
+                <option value="any" label="any" />
+                <option value="casual" label="casual" />
+                <option value="competative" label="competative" />
+                <option value="hard ball" label="hard ball" />
+              </select>
+          </div>
+           <label className="createLabel" htmlFor="age">
+            Age Group:
+          </label>
+          <div className="createGame-input-con">
+             <select
+                name="age"
+                value={formik.values.age}
+                onChange={formik.handleChange}
+                className="createGame-input"
+              >
+                <option value="" label="Age group" />
+                <option value="any" label="any" />
+                <option value="16-18" label="16-18" />
+                <option value="18-21" label="18-21" />
+                <option value="21-30" label="21-30" />
+                <option value="30+" label="30+" />
+              </select>
+          </div>
+           <label className="createLabel" htmlFor="duration">
+            Game Duration:
+          </label>
+          <div className="createGame-input-con">
+             <select
+                name="duration"
+                value={formik.values.duration}
+                onChange={formik.handleChange}
+                className="createGame-input"
+              >
+                <option value="" label="Duration" />
+                <option value="any" label="any" />
+                <option value="30" label="30min" />
+                <option value="60" label="60min" />
+                <option value="120" label="120min" />
+              </select>
+          </div>
+         
           <button type="submit" className="createGame-btn">
             Create Game
           </button>

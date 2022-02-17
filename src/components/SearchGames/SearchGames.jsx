@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IoMdBasketball } from "react-icons/io";
 import { setShowLogin } from "../../Redux/app";
-import { Link } from "react-router-dom";
-import "./Searchbar.scss";
+import GamesList from "../GamesList/GamesList";
+import "./SearchGames.scss";
 
 const SearchBar = () => {
   //Local State
@@ -16,6 +16,7 @@ const SearchBar = () => {
   //Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   const handleInput = (value) => {
     setInput(value);
@@ -37,7 +38,7 @@ const SearchBar = () => {
     }
     getGames();
   }, [input]);
-  // console.log(gamesList);
+
   return (
     <div>
       <div className="search-con">
@@ -64,20 +65,7 @@ const SearchBar = () => {
           />
         </div>
       </div>
-
-        <div className="gameCard-con">
-          {gamesList.map((game) => {
-            return (
-          
-              <div key={game.id} className="game-card">
-                <div className="gameContent">
-                  <h1>State:{game.state}</h1>
-                  <h1>City:{game.city}</h1>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <GamesList gamesList={gamesList}/>
     </div>
   );
 };

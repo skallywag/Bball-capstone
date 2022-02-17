@@ -1,11 +1,11 @@
 import React from "react";
-import Searchbar from "../../components/searchGames/Searchbar";
+import SearchGames from "../../components/SearchGames/SearchGames";
 import "./Search.scss";
 
 const Search = () => {
   return (
     <>
-      <Searchbar />
+      <SearchGames />
     </>
   );
 };

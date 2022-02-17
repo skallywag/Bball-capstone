@@ -13,6 +13,7 @@ import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
 import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
+import GameDetail from "./components/GameDetail/GameDetail"
 import "./App.scss";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<CreateAcc />} />
+        <Route path="/gameDetail" element={<GameDetail />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {/* <Footer /> */}
