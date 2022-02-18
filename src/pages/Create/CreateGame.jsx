@@ -115,8 +115,8 @@ const CreateGame = () => {
                 <option value="" label="Select Skill" />
                 <option value="any" label="any" />
                 <option value="casual" label="casual" />
-                <option value="competative" label="competative" />
-                <option value="hard ball" label="hard ball" />
+                <option value="competative" label="intermediate" />
+                <option value="hard ball" label="advanced" />
               </select>
           </div>
            <label className="createLabel" htmlFor="age">

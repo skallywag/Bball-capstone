@@ -1,0 +1,25 @@
+.players-con {
+  // background-color: blue;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.playerCard {
+  display: flex;
+  background-color: red;
+  padding: 10px;
+  width: 480px;
+  align-items: center;
+  border-radius: 45px;
+  gap: 20px;
+  margin: 10px;
+}
+
+.prof-bubble {
+  background-color: black;
+  height: 70px;
+  width: 70px;
+  margin-left: 15px;
+  border-radius: 360px;
+}

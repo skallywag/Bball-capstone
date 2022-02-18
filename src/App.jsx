@@ -13,7 +13,7 @@ import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
 import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
-import GameDetail from "./components/GameDetail/GameDetail"
+import GameDetail from "./pages/GameDetail/GameDetail"
 import "./App.scss";
 
 function App() {

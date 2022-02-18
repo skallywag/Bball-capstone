@@ -64,18 +64,27 @@ module.exports = {
     const { input } = req.body;
     //my Sub-optimal.
     const games = await sequelize.query(
-      `SELECT * FROM game
-      WHERE state IN (SELECT state FROM game WHERE state = '${input}')
-      OR city IN (SELECT city FROM game WHERE city = '${input}')
-      OR zipcode IN (SELECT zipcode FROM game WHERE zipcode::char = '${input}')`
+      `SELECT * FROM games
+      WHERE state IN (SELECT state FROM games WHERE state = '${input}')
+      OR city IN (SELECT city FROM games WHERE city = '${input}')
+      OR zipcode IN (SELECT zipcode FROM games WHERE zipcode::char = '${input}')`
     );
     res.status(200).send(games[0]);
   },
   createGame: async (req, res) => {
-    const { venue, state, city, address, zipcode, age, duration, skill } =
-      req.body;
+    const {
+      venue,
+      state,
+      city,
+      address,
+      zipcode,
+      age,
+      duration,
+      skill,
+      userid,
+    } = req.body;
     const createGame = await sequelize.query(
-      `INSERT INTO game(venue, state, city, address, zipcode, agegroup, duration, skill)
+      `INSERT INTO games(venue, state, city, address, zipcode, agegroup, duration, skill, userid)
       VALUES(
         '${venue}',
         '${state}',
@@ -85,14 +94,17 @@ module.exports = {
         '${age}',
         '${duration}',
         '${skill}'
-      ) RETURNING id`
+        '${userid}'
+      ) RETURNING id, userid`
     );
     res.status(200).send(createGame[0][0]);
   },
   getGame: async (req, res) => {
     const { id } = req.params;
     // console.log(id);
-    const game = await sequelize.query(`SELECT * FROM game WHERE id = '${id}'`);
+    const game = await sequelize.query(
+      `SELECT * FROM games WHERE id = '${id}'`
+    );
     res.status(200).send(game[0][0]);
   },
 };
