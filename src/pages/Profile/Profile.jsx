@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { BsFillCameraFill } from "react-icons/bs";
 import "./Profile.scss";
 
+const loggedUser = JSON.parse(localStorage.getItem("user"))
+// const userId = loggedUser.id
+
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 

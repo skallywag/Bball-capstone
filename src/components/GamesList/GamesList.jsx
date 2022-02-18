@@ -8,7 +8,7 @@ const GamesList = ({gamesList}) => {
     <div className="gameCard-con">
           {gamesList.map((game) => { 
             const searchParam = qs.stringify({
-              id: game.id,
+              gameId: game.id,
             })
             return (
               <Link to={`/gameDetail?${searchParam}`} className="gameLink" key={game.id}>

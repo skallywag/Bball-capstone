@@ -6,24 +6,21 @@ import qs from "query-string"
 import "./GameDetail.scss"
 import PlayerList from "../../components/PlayerList/PlayerList"
 import {ClipLoader} from "react-spinners"
-import {jsx} from "@emotion/react"
-
-const loaderCSS = jsx `
-  margin-top: 25px;
-  margin-bottom: 25px;
-`
 
 const GameDetail = () => {
+  const [userId, setUserId] = useState()
   const [gameDetail, setGameDetail] = useState()
   // grab search parameter, convert to an obj
   const location = useLocation()
-  const {id} = qs.parse(location.search)
+  const {gameId} = qs.parse(location.search)
+
   
   useEffect(() => {
-    // console.log(id);
     async function getGame(){
       try {
-        const response = await axios.get(`http://localhost:5432/game/${id}`)
+        const user = JSON.parse(localStorage.getItem("user"))
+        setUserId(user.id)
+        const response = await axios.get(`http://localhost:5432/game/${gameId}`)
         setGameDetail(response.data)
       } catch {
         console.error()
@@ -31,8 +28,20 @@ const GameDetail = () => {
     }
     getGame()
   }, [])
-  // console.log(gameDetail);
 
+const joinGame = async () => {
+  if(isLoggedIn){
+    try {
+      await axios.put(`http://localhost:5432/joinGame/${gameId}/?userId=${userId}`)
+    }
+    catch {
+      console.error()
+    }
+  } 
+  else {
+
+  }
+}
   return (
     <div className='detail-wrapper'>
     <div className='detailCon'>
@@ -58,13 +67,13 @@ const GameDetail = () => {
           </div>
        </div>
     </div> 
-    :  <ClipLoader jsx={loaderCSS}/> }
+    :  <ClipLoader /> }
         <ul className="prof-actions">    
-          <li className="join-action">Join Game</li>
+          <li onClick={() => joinGame()} className="join-action">Join Game</li>
           <li className="leave-action">Leave Game</li>
       </ul>
     </div>
-        <PlayerList />
+        <PlayerList gameId={gameId} userId={userId} />
     </div>
   )
 }
