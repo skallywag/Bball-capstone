@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+// Icons
 import {
   FaUserTag,
   FaUserTie,
@@ -13,8 +13,9 @@ import { MdOutlineAlternateEmail } from "react-icons/md";
 import "./Signup.scss";
 
 const Signup = () => {
+  // Local State
   const [acctCreated, setAcctCreated] = useState(false);
-  // const navigate = useNavigate();
+
   const validate = (values) => {
     let errors = {};
     let emailRegex = new RegExp(
@@ -72,7 +73,6 @@ const Signup = () => {
           "http://localhost:5432/register",
           values
         );
-        // console.log(response.data);
         setAcctCreated(response.data);
       } catch {
         console.error((err) => {

@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import PlayerList from "../../components/PlayerList/PlayerList";
-import { ClipLoader } from "react-spinners";
-import { useSelector, useDispatch } from "react-redux";
-import { setShowLogin } from "../../Redux/app";
 import qs from "query-string";
+// React
+import { useState, useEffect } from "react";
+// Router
+import { useLocation } from "react-router-dom";
+// Spinners
+import { ClipLoader } from "react-spinners";
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+// App State
+import { setShowLogin } from "../../Redux/app";
+// Components
+import PlayerList from "../../components/PlayerList/PlayerList";
 import "./GameDetail.scss";
 
 const GameDetail = () => {

@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
+// Router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// Redux
 import { useDispatch } from "react-redux";
+// Global State
 import { setIsLoggedIn } from "./Redux/app";
+// Components
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import ErrorPage from "./pages/Error/ErrorPage";
@@ -13,7 +17,8 @@ import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
 import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
-import GameDetail from "./pages/GameDetail/GameDetail"
+import GameDetail from "./pages/GameDetail/GameDetail";
+// Components
 import "./App.scss";
 
 function App() {

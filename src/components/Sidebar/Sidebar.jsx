@@ -1,14 +1,22 @@
 import React from "react";
+// Router
 import { Link } from "react-router-dom";
+// Redux
 import { useDispatch, useSelector } from "react-redux";
+// App State
 import { closeSideNav } from "../../Redux/app";
-import navItems from "../Navbar/navItems";
+// Icons
 import { GrInstagram, GrFacebook, GrTwitter } from "react-icons/gr";
+// Nav Link Import
+import navItems from "../Navbar/navItems";
+// CSS
 import "./Sidebar.scss";
 
 const Sidebar = () => {
+  // Global State
   const { showSideNav } = useSelector((state) => state.showSideNav);
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
+  // Hooks
   const dispatch = useDispatch();
 
   return (

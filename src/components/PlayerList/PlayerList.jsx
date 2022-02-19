@@ -1,10 +1,14 @@
 import React from "react";
 import axios from "axios";
+// React
 import { useEffect, useState } from "react";
+// Spinners
 import { ClipLoader } from "react-spinners";
+// CSS
 import "./PlayerList.scss";
 
 const PlayerList = ({ gameId, isJoined, didLeave }) => {
+  // Local State
   const [players, setPlayers] = useState();
 
   const game = {

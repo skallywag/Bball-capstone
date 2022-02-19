@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+// React
+import { useEffect, useState } from "react";
+// Redux
 import { useSelector, useDispatch } from "react-redux";
+// Router
 import { useNavigate } from "react-router-dom";
+// Icons
 import { IoMdBasketball } from "react-icons/io";
+// App State
 import { setShowLogin } from "../../Redux/app";
+// Components
 import GamesList from "../GamesList/GamesList";
+// CSS
 import "./SearchGames.scss";
 
 const SearchBar = () => {
@@ -16,7 +24,6 @@ const SearchBar = () => {
   //Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
   const handleInput = (value) => {
     setInput(value);
@@ -65,7 +72,7 @@ const SearchBar = () => {
           />
         </div>
       </div>
-        <GamesList gamesList={gamesList}/>
+      <GamesList gamesList={gamesList} />
     </div>
   );
 };

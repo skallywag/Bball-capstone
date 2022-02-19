@@ -1,21 +1,28 @@
 import React from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { loginUser, showLogin } from "../../Redux/app";
-import { setShowLogin } from "../../Redux/app";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+// App State
+import { loginUser, setShowLogin } from "../../Redux/app";
+// Formik
 import { useFormik } from "formik";
-import { useNavigate, Link } from "react-router-dom";
+// Router
+import { useNavigate, Link, useLocation } from "react-router-dom";
+// Icons
 import { AiFillCloseCircle } from "react-icons/ai";
 import { ImKey } from "react-icons/im";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaArrowCircleRight } from "react-icons/fa";
+//
 import "./Login.scss";
-import { useSelector } from "react-redux";
 
 const Login = () => {
+  // Global State
   const { showLogin } = useSelector((state) => state.showLogin);
+  // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const validate = (values) => {
     const errors = {};
@@ -47,7 +54,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(response.data));
         dispatch(loginUser());
         dispatch(setShowLogin(false));
-        navigate("/profile");
+        navigate(location.pathname);
       } catch {
         console.error((err) => {
           console.log(err.response.data);

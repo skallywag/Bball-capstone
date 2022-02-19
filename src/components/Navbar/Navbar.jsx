@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
+// Redux
 import { useSelector, useDispatch } from "react-redux";
+// Router
 import { Link, useNavigate, useLocation } from "react-router-dom";
+// App State
 import { toggleSideNav, setIsLoggedIn, setShowLogin } from "../../Redux/app";
+// Icons
 import { FaBars } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { ImCross } from "react-icons/im";
+// Components
 import Login from "../Login/Login";
+// CSS
 import "./Navbar.scss";
 
 const Navbar = () => {
-  // const [showLogin, setShowLogin] = useState(false);
+  //Global State
   const { showSideNav } = useSelector((state) => state.showSideNav);
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
-
+  //Hooks
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  let pageTitle = location.pathname.split("/")[1];
+  // Path Title
+  const pageTitle = location.pathname.split("/")[1];
 
   const userLogout = () => {
     localStorage.removeItem("user");
