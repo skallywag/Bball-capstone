@@ -136,4 +136,9 @@ module.exports = {
     );
     res.status(200).send(response[0]);
   },
+  removePlayer: async (req, res) => {
+    const { userId } = req.query;
+    console.log(userId);
+    // await sequelize.query(``)
+  },
 };

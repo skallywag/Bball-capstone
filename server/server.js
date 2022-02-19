@@ -14,6 +14,7 @@ const {
   getGame,
   joinGame,
   getPlayers,
+  removePlayer,
 } = require("./controller.js");
 
 app.use(express.json());
@@ -27,6 +28,7 @@ app.post("/create", createGame);
 app.post("/getPlayers", getPlayers);
 app.get("/game/:id", getGame);
 app.put("/joinGame/:id", joinGame);
+app.delete("/removePlayer", removePlayer);
 
 app.listen(PORT, () => {
   console.log(`Warped to ${PORT}`);
