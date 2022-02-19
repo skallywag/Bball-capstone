@@ -48,21 +48,30 @@ const GameDetail = () => {
   }, []);
 
   useEffect(() => {
-    // console.log(typeof gameId, "gameid");
-    async function getPlayers() {
+    async function initializePlayers() {
       try {
-        const response = await axios.post("http://localhost:5432/getPlayers", {
+        const { data } = await axios.post("http://localhost:5432/getPlayers", {
           gameId: Number(gameId),
         });
-        const playerData = response.data;
-        setPlayers(playerData);
-        setIsJoined(players.find((player) => player.userid === userId));
+        setPlayers(data);
+        setIsJoined(data.find((player) => player.userid === userId));
       } catch {
         console.error();
       }
     }
-    getPlayers();
-  }, [isJoined]);
+    initializePlayers();
+  }, []);
+
+  const getPlayers = async () => {
+    try {
+      const { data } = await axios.post("http://localhost:5432/getPlayers", {
+        gameId: Number(gameId),
+      });
+      setPlayers(data);
+    } catch {
+      console.error();
+    }
+  };
 
   const joinGame = async () => {
     if (isLoggedIn) {
@@ -71,6 +80,7 @@ const GameDetail = () => {
           `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
         );
         setIsJoined(true);
+        getPlayers();
       } catch {
         console.error();
       }
@@ -87,6 +97,7 @@ const GameDetail = () => {
         `http://localhost:5432/removePlayer/?userId=${userId}`
       );
       setIsJoined(false);
+      getPlayers();
     } catch {
       console.error();
     }
