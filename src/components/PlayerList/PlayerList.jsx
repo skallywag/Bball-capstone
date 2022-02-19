@@ -7,28 +7,8 @@ import { ClipLoader } from "react-spinners";
 // CSS
 import "./PlayerList.scss";
 
-const PlayerList = ({ gameId, isJoined }) => {
+const PlayerList = ({ players }) => {
   // Local State
-  const [players, setPlayers] = useState();
-
-  const game = {
-    gameId,
-  };
-  useEffect(() => {
-    async function getPlayers() {
-      try {
-        const response = await axios.post(
-          "http://localhost:5432/getPlayers",
-          game
-        );
-        const playerData = response.data;
-        setPlayers(playerData);
-      } catch {
-        console.error();
-      }
-    }
-    getPlayers();
-  }, [isJoined]);
 
   return (
     <div className="players-con">

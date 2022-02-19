@@ -129,7 +129,7 @@ module.exports = {
   // Get all players from specific game
   getPlayers: async (req, res) => {
     const { gameId } = req.body;
-    console.log(gameId);
+    console.log(gameId, "gameid");
     const response = await sequelize.query(
       `SELECT * FROM users LEFT OUTER JOIN players ON users.id = players.userid WHERE players.gameid = '${gameId}'
       `

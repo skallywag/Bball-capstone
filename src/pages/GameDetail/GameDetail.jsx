@@ -18,9 +18,11 @@ import "./GameDetail.scss";
 
 const GameDetail = () => {
   // Local State
-  const [userId, setUserId] = useState();
   const [gameDetail, setGameDetail] = useState();
   const [isJoined, setIsJoined] = useState(null);
+  const [players, setPlayers] = useState();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = Number(user.id);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -29,10 +31,6 @@ const GameDetail = () => {
   // grab search parameter, convert to an obj
   const location = useLocation();
   const { gameId } = qs.parse(location.search);
-
-  // useEffect(() => {
-  //   setIsJoined(isJoined);
-  // }, []);
 
   useEffect(() => {
     async function getGame() {
@@ -49,10 +47,25 @@ const GameDetail = () => {
     getGame();
   }, []);
 
+  useEffect(() => {
+    // console.log(typeof gameId, "gameid");
+    async function getPlayers() {
+      try {
+        const response = await axios.post("http://localhost:5432/getPlayers", {
+          gameId: Number(gameId),
+        });
+        const playerData = response.data;
+        setPlayers(playerData);
+        setIsJoined(players.find((player) => player.userid === userId));
+      } catch {
+        console.error();
+      }
+    }
+    getPlayers();
+  }, [isJoined]);
+
   const joinGame = async () => {
     if (isLoggedIn) {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const userId = user.id;
       try {
         await axios.put(
           `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
@@ -70,7 +83,7 @@ const GameDetail = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user.id;
     try {
-      const res = await axios.delete(
+      await axios.delete(
         `http://localhost:5432/removePlayer/?userId=${userId}`
       );
       setIsJoined(false);
@@ -109,23 +122,18 @@ const GameDetail = () => {
           <ClipLoader />
         )}
         <div className="gameActions">
-          {!isJoined ? (
-            <button onClick={() => joinGame()} className="gameAction">
-              Join Game
-            </button>
-          ) : (
+          {isJoined ? (
             <button onClick={() => leaveGame()} className="gameAction">
               Leave Game
+            </button>
+          ) : (
+            <button onClick={() => joinGame()} className="gameAction">
+              Join Game
             </button>
           )}
         </div>
       </div>
-      <PlayerList
-        gameId={gameId}
-        userId={userId}
-        isJoined={isJoined}
-        setIsJoined={setIsJoined}
-      />
+      <PlayerList players={players} />
     </div>
   );
 };
