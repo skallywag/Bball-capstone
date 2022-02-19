@@ -12,8 +12,10 @@ const GameDetail = () => {
   // Local State
   const [userId, setUserId] = useState();
   const [gameDetail, setGameDetail] = useState();
-  const [isJoined, setIsJoined] = useState(null);
-  //Global State
+  const [isJoined, setIsJoined] = useState(false);
+  // console.log(isJoined);
+
+  //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -45,6 +47,7 @@ const GameDetail = () => {
           `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
         );
         setIsJoined(true);
+        setUserId(userId);
       } catch {
         console.error();
       }
@@ -81,16 +84,16 @@ const GameDetail = () => {
           <ClipLoader />
         )}
         <div className="gameActions">
-          {!isJoined ? (
-            <button className="gameAction">Leave Game</button>
-          ) : (
+          {isJoined ? (
             <button onClick={() => joinGame()} className="gameAction">
               Join Game
             </button>
+          ) : (
+            <button className="gameAction">Leave Game</button>
           )}
         </div>
       </div>
-      <PlayerList gameId={gameId} userId={userId} />
+      <PlayerList gameId={gameId} userId={userId} isJoined={isJoined} />
     </div>
   );
 };
