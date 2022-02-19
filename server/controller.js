@@ -138,7 +138,9 @@ module.exports = {
   },
   removePlayer: async (req, res) => {
     const { userId } = req.query;
-    console.log(userId);
-    // await sequelize.query(``)
+    const response = await sequelize.query(
+      `DELETE FROM players WHERE userid = '${userId}'`
+    );
+    res.status(200).send(response[0][0]);
   },
 };

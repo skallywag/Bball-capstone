@@ -13,8 +13,7 @@ const GameDetail = () => {
   const [userId, setUserId] = useState();
   const [gameDetail, setGameDetail] = useState();
   const [isJoined, setIsJoined] = useState(false);
-  console.log(userId);
-  // console.log(isJoined);
+  const [didLeave, setDidLeave] = useState(false);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -48,7 +47,6 @@ const GameDetail = () => {
           `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
         );
         setIsJoined(true);
-        // setUserId(userId);
       } catch {
         console.error();
       }
@@ -61,9 +59,10 @@ const GameDetail = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user.id;
     try {
-      await axios.delete(
+      const res = await axios.delete(
         `http://localhost:5432/removePlayer/?userId=${userId}`
       );
+      setDidLeave(true);
       setIsJoined(false);
     } catch {
       console.error();
@@ -98,18 +97,23 @@ const GameDetail = () => {
           <ClipLoader />
         )}
         <div className="gameActions">
-          {!isJoined ? (
-            <button onClick={() => joinGame()} className="gameAction">
-              Join Game
-            </button>
-          ) : (
+          {isJoined ? (
             <button onClick={() => leaveGame()} className="gameAction">
               Leave Game
+            </button>
+          ) : (
+            <button onClick={() => joinGame()} className="gameAction">
+              Join Game
             </button>
           )}
         </div>
       </div>
-      <PlayerList gameId={gameId} userId={userId} isJoined={isJoined} />
+      <PlayerList
+        gameId={gameId}
+        userId={userId}
+        isJoined={isJoined}
+        didLeave={didLeave}
+      />
     </div>
   );
 };
