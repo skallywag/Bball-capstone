@@ -41,35 +41,22 @@
   padding-left: 10px;
   //   color: whitesmoke;
 }
-.detailActions {
+.gameAction {
   background-color: #cf5300;
   margin-left: 5px;
   line-height: 30px;
   border-radius: 10px;
+  border-style: none;
   width: 170px;
   text-align: center;
+  cursor: pointer;
+  font-size: 25px;
 }
 
-.join-action {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 4px 8px;
-  border-bottom: 1px solid black;
-}
-.leave-action {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 4px 8px;
+.gameAction:hover {
+  background-color: rgb(53, 52, 52);
 }
 
-.join-action:hover {
-  background-color: rgb(53, 52, 52);
-  cursor: pointer;
-}
-.leave-action:hover {
-  cursor: pointer;
-  background-color: rgb(53, 52, 52);
-}
 .overlay {
   background: rgba(204, 204, 204, 0.5);
   display: flex;

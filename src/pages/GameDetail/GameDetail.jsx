@@ -1,81 +1,98 @@
-import axios from 'axios'
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { useLocation, Link } from 'react-router-dom'
-import qs from "query-string"
-import "./GameDetail.scss"
-import PlayerList from "../../components/PlayerList/PlayerList"
-import {ClipLoader} from "react-spinners"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import PlayerList from "../../components/PlayerList/PlayerList";
+import { ClipLoader } from "react-spinners";
+import { useSelector, useDispatch } from "react-redux";
+import { setShowLogin } from "../../Redux/app";
+import qs from "query-string";
+import "./GameDetail.scss";
 
 const GameDetail = () => {
-  const [userId, setUserId] = useState()
-  const [gameDetail, setGameDetail] = useState()
-  // grab search parameter, convert to an obj
-  const location = useLocation()
-  const {gameId} = qs.parse(location.search)
+  // Local State
+  const [userId, setUserId] = useState();
+  const [gameDetail, setGameDetail] = useState();
+  const [isJoined, setIsJoined] = useState(null);
+  //Global State
+  const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
+  const dispatch = useDispatch();
 
-  
+  // grab search parameter, convert to an obj
+  const location = useLocation();
+  const { gameId } = qs.parse(location.search);
+
   useEffect(() => {
-    async function getGame(){
+    async function getGame() {
       try {
-        const user = JSON.parse(localStorage.getItem("user"))
-        setUserId(user.id)
-        const response = await axios.get(`http://localhost:5432/game/${gameId}`)
-        setGameDetail(response.data)
+        const response = await axios.get(
+          `http://localhost:5432/game/${gameId}`
+        );
+        const gameData = response.data;
+        setGameDetail(gameData);
       } catch {
-        console.error()
+        console.error();
       }
     }
-    getGame()
-  }, [])
+    getGame();
+  }, []);
 
-const joinGame = async () => {
-  if(isLoggedIn){
-    try {
-      await axios.put(`http://localhost:5432/joinGame/${gameId}/?userId=${userId}`)
+  const joinGame = async () => {
+    if (isLoggedIn) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const userId = user.id;
+      try {
+        await axios.put(
+          `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
+        );
+        setIsJoined(true);
+      } catch {
+        console.error();
+      }
+    } else {
+      dispatch(setShowLogin(true));
     }
-    catch {
-      console.error()
-    }
-  } 
-  else {
-
-  }
-}
+  };
   return (
-    <div className='detail-wrapper'>
-    <div className='detailCon'>
-      {gameDetail ? 
-     <div className="detailCard">
-          <h1 className="detailLocation">{gameDetail.venue}</h1>
-        <div className="detailContent-con">
-          <div className='detail-con'>
-           <span className="detailTitle">Skill Level</span>
-           <span className='detail'>{gameDetail.skill}</span>
+    <div className="detail-wrapper">
+      <div className="detailCon">
+        {gameDetail ? (
+          <div className="detailCard">
+            <h1 className="detailLocation">{gameDetail.venue}</h1>
+            <div className="detailContent-con">
+              <div className="detail-con">
+                <span className="detailTitle">Skill Level</span>
+                <span className="detail">{gameDetail.skill}</span>
+              </div>
+              <div className="detail-con">
+                <span className="detailTitle">Duration</span>
+                <span className="detail">{gameDetail.duration}Min</span>
+              </div>
+              <div className="detail-con">
+                <span className="detailTitle">Age Group</span>
+                <span className="detail">{gameDetail.agegroup}</span>
+              </div>
+              <div className="detail-con">
+                <span className="detailTitle">Players</span>
+                <span className="detail">5</span>
+              </div>
+            </div>
           </div>
-          <div className='detail-con'>
-           <span className="detailTitle">Duration</span>
-           <span className='detail'>{gameDetail.duration}Min</span>
-          </div>
-          <div className='detail-con'>
-           <span className="detailTitle">Age Group</span>
-           <span className='detail'>{gameDetail.agegroup}</span>
-          </div>
-          <div className='detail-con'>
-           <span className="detailTitle">Players</span>
-           <span className='detail'>5</span>
-          </div>
-       </div>
-    </div> 
-    :  <ClipLoader /> }
-        <ul className="prof-actions">    
-          <li onClick={() => joinGame()} className="join-action">Join Game</li>
-          <li className="leave-action">Leave Game</li>
-      </ul>
+        ) : (
+          <ClipLoader />
+        )}
+        <div className="gameActions">
+          {!isJoined ? (
+            <button className="gameAction">Leave Game</button>
+          ) : (
+            <button onClick={() => joinGame()} className="gameAction">
+              Join Game
+            </button>
+          )}
+        </div>
+      </div>
+      <PlayerList gameId={gameId} userId={userId} />
     </div>
-        <PlayerList gameId={gameId} userId={userId} />
-    </div>
-  )
-}
+  );
+};
 
-export default GameDetail
+export default GameDetail;
