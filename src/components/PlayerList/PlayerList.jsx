@@ -7,7 +7,7 @@ import { ClipLoader } from "react-spinners";
 // CSS
 import "./PlayerList.scss";
 
-const PlayerList = ({ gameId, isJoined, didLeave }) => {
+const PlayerList = ({ gameId, isJoined }) => {
   // Local State
   const [players, setPlayers] = useState();
 
@@ -28,7 +28,7 @@ const PlayerList = ({ gameId, isJoined, didLeave }) => {
       }
     }
     getPlayers();
-  }, [isJoined, didLeave]);
+  }, [isJoined]);
 
   return (
     <div className="players-con">

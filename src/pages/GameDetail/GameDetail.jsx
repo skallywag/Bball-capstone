@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import qs from "query-string";
 // React
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 // Router
 import { useLocation } from "react-router-dom";
 // Spinners
@@ -13,14 +13,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setShowLogin } from "../../Redux/app";
 // Components
 import PlayerList from "../../components/PlayerList/PlayerList";
+
 import "./GameDetail.scss";
 
 const GameDetail = () => {
   // Local State
   const [userId, setUserId] = useState();
   const [gameDetail, setGameDetail] = useState();
-  const [isJoined, setIsJoined] = useState(false);
-  const [didLeave, setDidLeave] = useState(false);
+  const [isJoined, setIsJoined] = useState(null);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -29,6 +29,10 @@ const GameDetail = () => {
   // grab search parameter, convert to an obj
   const location = useLocation();
   const { gameId } = qs.parse(location.search);
+
+  // useEffect(() => {
+  //   setIsJoined(isJoined);
+  // }, []);
 
   useEffect(() => {
     async function getGame() {
@@ -69,17 +73,18 @@ const GameDetail = () => {
       const res = await axios.delete(
         `http://localhost:5432/removePlayer/?userId=${userId}`
       );
-      setDidLeave(true);
       setIsJoined(false);
     } catch {
       console.error();
     }
   };
+
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
         {gameDetail ? (
           <div className="detailCard">
+            {/* <MapContainer /> */}
             <h1 className="detailLocation">{gameDetail.venue}</h1>
             <div className="detailContent-con">
               <div className="detail-con">
@@ -104,13 +109,13 @@ const GameDetail = () => {
           <ClipLoader />
         )}
         <div className="gameActions">
-          {isJoined ? (
-            <button onClick={() => leaveGame()} className="gameAction">
-              Leave Game
-            </button>
-          ) : (
+          {!isJoined ? (
             <button onClick={() => joinGame()} className="gameAction">
               Join Game
+            </button>
+          ) : (
+            <button onClick={() => leaveGame()} className="gameAction">
+              Leave Game
             </button>
           )}
         </div>
@@ -119,7 +124,7 @@ const GameDetail = () => {
         gameId={gameId}
         userId={userId}
         isJoined={isJoined}
-        didLeave={didLeave}
+        setIsJoined={setIsJoined}
       />
     </div>
   );
