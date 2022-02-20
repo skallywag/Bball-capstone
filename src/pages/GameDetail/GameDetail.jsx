@@ -13,16 +13,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { setShowLogin } from "../../Redux/app";
 // Components
 import PlayerList from "../../components/PlayerList/PlayerList";
-
+// CSS
 import "./GameDetail.scss";
+
+const user = JSON.parse(localStorage.getItem("user"));
+const userId = Number(user.id);
 
 const GameDetail = () => {
   // Local State
   const [gameDetail, setGameDetail] = useState();
   const [isJoined, setIsJoined] = useState(null);
   const [players, setPlayers] = useState();
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = Number(user.id);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
