@@ -17,8 +17,15 @@ const PlayerList = ({ players }) => {
         players.map((player) => {
           return (
             <div key={player.id} className="playerCard">
-              <div className="prof-bubble"></div>
+              <div className="profBubble">
+                <h1 className="playerInitials">
+                  {player.firstname[0]}
+                  {player.lastname[0]}
+                </h1>
+              </div>
               <h1 className="playerName">{player.firstname}</h1>
+              <h1 className="playerName">{player.lastname}</h1>
+              <h1 className="playerStatus">Status:{player.status}</h1>
             </div>
           );
         })

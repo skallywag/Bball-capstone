@@ -23,7 +23,7 @@ const GameDetail = () => {
   // Local State
   const [gameDetail, setGameDetail] = useState();
   const [isJoined, setIsJoined] = useState(null);
-  const [players, setPlayers] = useState();
+  const [players, setPlayers] = useState([]);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -126,25 +126,37 @@ const GameDetail = () => {
               </div>
               <div className="detail-con">
                 <span className="detailTitle">Players</span>
-                <span className="detail">5</span>
+                <span className="detail">{players.length}</span>
               </div>
             </div>
           </div>
         ) : (
           <ClipLoader />
         )}
-        <div className="gameActions">
-          {isJoined ? (
+        {/* <div className="gameAction-con"> */}
+        {isJoined ? (
+          <div className="gameAction-con">
             <button onClick={() => leaveGame()} className="gameAction">
               Leave Game
             </button>
-          ) : (
-            <button onClick={() => joinGame()} className="gameAction">
-              Join Game
-            </button>
-          )}
-        </div>
+            <select
+              name="status"
+              // value={value}
+              className="gameAction"
+            >
+              <option value="" label="Set Status" />
+              <option value="Here" label="Here" />
+              <option value="Enroute" label="Enroute" />
+              <option value="Be there soon" label="Be there soon" />
+            </select>
+          </div>
+        ) : (
+          <button onClick={() => joinGame()} className="gameAction">
+            Join Game
+          </button>
+        )}
       </div>
+      {/* </div> */}
       <PlayerList players={players} />
     </div>
   );

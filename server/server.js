@@ -15,10 +15,23 @@ const {
   joinGame,
   getPlayers,
   removePlayer,
+  setPlayerStatus,
+  getUsersGame,
 } = require("./controller.js");
 
 app.use(express.json());
 app.use(cors());
+
+// Comet Chat
+const appID = "{}";
+const apiKey = "{}";
+const url = "'https://api.cometchat.com/v2'";
+
+const headers = {
+  "Content-Type": "application/json",
+  appid: appID,
+  apikey: apiKey,
+};
 
 //Endpoints
 app.post("/register", createUser);
@@ -26,6 +39,8 @@ app.post("/login", userLogin);
 app.post("/games", getGames);
 app.post("/create", createGame);
 app.post("/getPlayers", getPlayers);
+app.post("/setPlayerStatus", setPlayerStatus);
+app.post("/userGame", getUsersGame);
 app.get("/game/:id", getGame);
 app.put("/joinGame/:id", joinGame);
 app.delete("/removePlayer", removePlayer);

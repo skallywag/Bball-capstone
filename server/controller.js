@@ -3,6 +3,7 @@ const { CONNECTION_STRING } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 const res = require("express/lib/response");
+const { user } = require("pg/lib/defaults");
 
 const sequelize = new Sequelize(CONNECTION_STRING, {
   dialect: "postgres",
@@ -16,7 +17,6 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
   // User Signup
   createUser: async (req, res) => {
-    // console.log(req.body);
     const { userName, firstName, lastName, email, password } = req.body;
     const checkUser = await sequelize.query(
       `SELECT * FROM users WHERE username = '${userName}'`
@@ -36,7 +36,6 @@ module.exports = {
           '${passwordHash}')
         RETURNING id, firstname, lastname`
       );
-      // console.log(newUser);
       res.status(200).send(newUser[0][0]);
     }
   },
@@ -66,7 +65,7 @@ module.exports = {
   // Users Search for Games
   getGames: async (req, res) => {
     const { input } = req.body;
-    //my Sub-optimal.
+    //my Sub-optimal query
     const games = await sequelize.query(
       `SELECT * FROM games
       WHERE state IN (SELECT state FROM games WHERE state = '${input}')
@@ -76,7 +75,7 @@ module.exports = {
     res.status(200).send(games[0]);
   },
 
-  // Users Create new Game
+  // Create new Game
   createGame: async (req, res) => {
     const {
       venue,
@@ -106,41 +105,58 @@ module.exports = {
     res.status(200).send(createGame[0][0]);
   },
 
-  // Get Target Game
+  // Get game from id
   getGame: async (req, res) => {
     const { id } = req.params;
-    // console.log(id);
     const game = await sequelize.query(
       `SELECT * FROM games WHERE id = '${id}'`
     );
     res.status(200).send(game[0][0]);
+  },
+  // Grabs the game the user created
+  getUsersGame: async (req, res) => {
+    const { userId } = req.body;
+    console.log(userId);
+    const response = await sequelize.query(
+      `SELECT * FROM games WHERE userid = '${userId}'`
+    );
+    res.status(200).send(response[0][0]);
   },
 
   // Users Join specific game
   joinGame: async (req, res) => {
     const { id } = req.params;
     const { userId } = req.query;
-    // console.log(id, userId);
     const response = await sequelize.query(`INSERT INTO players(userid, gameid)
     VALUES('${userId}', ${id})`);
     res.status(200).send(response[0][0]);
   },
 
-  // Get all players from specific game
+  // Get all players from specific game id
   getPlayers: async (req, res) => {
     const { gameId } = req.body;
-    console.log(gameId, "gameid");
     const response = await sequelize.query(
       `SELECT * FROM users LEFT OUTER JOIN players ON users.id = players.userid WHERE players.gameid = '${gameId}'
       `
     );
     res.status(200).send(response[0]);
   },
+
+  // Remove a player from a game
   removePlayer: async (req, res) => {
     const { userId } = req.query;
     const response = await sequelize.query(
       `DELETE FROM players WHERE userid = '${userId}'`
     );
     res.status(200).send(response[0][0]);
+  },
+  setPlayerStatus: async (req, res) => {
+    const { gameId, userId, playerStatus } = req.body;
+    console.log(gameId, userId, playerStatus);
+    const response = await sequelize.query(
+      `SELECT * FROM users WHERE id = '${userId}' SET status = '${playerStatus}'`
+    );
+
+    res.status(200).send(response[0]);
   },
 };

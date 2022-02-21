@@ -11,7 +11,7 @@
   width: 480px;
   align-items: center;
   border-radius: 45px;
-  gap: 20px;
+  gap: 10px;
   margin: 10px;
   background: rgb(77, 77, 77);
   background: linear-gradient(
@@ -21,7 +21,10 @@
   );
 }
 
-.prof-bubble {
+.profBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(41, 40, 40);
   height: 70px;
   width: 70px;
@@ -32,4 +35,9 @@
 .playerName {
   color: #cf5300;
   font-size: 25px;
+}
+
+.playerInitials {
+  font-size: 58px;
+  color: rgb(77, 77, 77);
 }

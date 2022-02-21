@@ -41,9 +41,13 @@
   padding-left: 10px;
   //   color: whitesmoke;
 }
+.gameAction-con {
+  display: flex;
+  flex-direction: column;
+}
 .gameAction {
   background-color: #cf5300;
-  margin-left: 5px;
+  margin: 5px;
   padding: 10px;
   border-radius: 10px;
   border-style: none;
