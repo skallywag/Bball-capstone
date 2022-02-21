@@ -39,10 +39,10 @@ app.post("/login", userLogin);
 app.post("/games", getGames);
 app.post("/create", createGame);
 app.post("/getPlayers", getPlayers);
-app.post("/setPlayerStatus", setPlayerStatus);
 app.post("/userGame", getUsersGame);
-app.get("/game/:id", getGame);
 app.put("/joinGame/:id", joinGame);
+app.put("/setPlayerStatus", setPlayerStatus);
+app.get("/game/:id", getGame);
 app.delete("/removePlayer", removePlayer);
 
 app.listen(PORT, () => {

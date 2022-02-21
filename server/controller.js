@@ -150,13 +150,14 @@ module.exports = {
     );
     res.status(200).send(response[0][0]);
   },
+  // Set Player Status for game
   setPlayerStatus: async (req, res) => {
-    const { gameId, userId, playerStatus } = req.body;
-    console.log(gameId, userId, playerStatus);
+    const { userId, value } = req.body;
+    // console.log(userId, value);
     const response = await sequelize.query(
-      `SELECT * FROM users WHERE id = '${userId}' SET status = '${playerStatus}'`
+      `UPDATE users SET status = '${value}' WHERE id = '${userId}'
+      RETURNING status`
     );
-
     res.status(200).send(response[0]);
   },
 };

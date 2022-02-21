@@ -7,7 +7,7 @@ import { ClipLoader } from "react-spinners";
 // CSS
 import "./PlayerList.scss";
 
-const PlayerList = ({ players }) => {
+const PlayerList = ({ players, status }) => {
   // Local State
 
   return (
@@ -23,9 +23,13 @@ const PlayerList = ({ players }) => {
                   {player.lastname[0]}
                 </h1>
               </div>
-              <h1 className="playerName">{player.firstname}</h1>
-              <h1 className="playerName">{player.lastname}</h1>
-              <h1 className="playerStatus">Status:{player.status}</h1>
+              <div className="playerDetails">
+                <h1 className="playerName">{player.firstname}</h1>
+                <h1 className="playerName">{player.lastname}</h1>
+                <div>
+                  <h1 className="playerStatus">Status: {player.status}</h1>
+                </div>
+              </div>
             </div>
           );
         })

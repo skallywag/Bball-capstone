@@ -16,15 +16,16 @@ import PlayerList from "../../components/PlayerList/PlayerList";
 // CSS
 import "./GameDetail.scss";
 
-const user = JSON.parse(localStorage.getItem("user"));
-const userId = Number(user.id);
+// const user = JSON.parse(localStorage.getItem("user"));
+// let userId = Number(user.id);
 
 const GameDetail = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
   // Local State
   const [gameDetail, setGameDetail] = useState();
   const [isJoined, setIsJoined] = useState(null);
   const [players, setPlayers] = useState([]);
-  const [playerStatus, setPlayerStatus] = useState("");
+  const [status, setStatus] = useState();
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -50,18 +51,22 @@ const GameDetail = () => {
   }, []);
 
   useEffect(() => {
-    async function initializePlayers() {
+    async function initialPlayers() {
       try {
         const { data } = await axios.post("http://localhost:5432/getPlayers", {
           gameId: Number(gameId),
         });
         setPlayers(data);
-        setIsJoined(data.find((player) => player.userid === userId));
+        if (user) {
+          let userId = user.id;
+          setIsJoined(data.find((player) => player.userid === userId));
+        }
+        getPlayers();
       } catch {
         console.error();
       }
     }
-    initializePlayers();
+    initialPlayers();
   }, []);
 
   const getPlayers = async () => {
@@ -77,6 +82,7 @@ const GameDetail = () => {
 
   const joinGame = async () => {
     if (isLoggedIn) {
+      let userId = user.id;
       try {
         await axios.put(
           `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
@@ -106,13 +112,20 @@ const GameDetail = () => {
   };
 
   const handleStatusChange = async (value) => {
-    console.log(value);
+    let userId = Number(user.id);
+    setStatus(value);
     try {
-      const response = await axios.put();
+      const response = await axios.put(
+        "http://localhost:5432/setPlayerStatus",
+        { userId, value }
+      );
+      getPlayers();
+      setStatus("Set Status");
     } catch {
       console.error();
     }
   };
+
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
@@ -150,7 +163,6 @@ const GameDetail = () => {
         ) : (
           <ClipLoader />
         )}
-        {/* <div className="gameAction-con"> */}
         {isJoined ? (
           <div className="gameAction-con">
             <button onClick={() => leaveGame()} className="gameAction">
@@ -161,7 +173,7 @@ const GameDetail = () => {
               name="playerStatus"
               id="playerStatus"
               className="gameAction"
-              // value={playerStatus}
+              value={status}
               onChange={(e) => handleStatusChange(e.target.value)}
             >
               <option value="" label="Set Status" />
@@ -178,8 +190,7 @@ const GameDetail = () => {
           </button>
         )}
       </div>
-      {/* </div> */}
-      <PlayerList players={players} />
+      <PlayerList players={players} status={status} />
     </div>
   );
 };

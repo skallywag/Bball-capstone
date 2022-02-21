@@ -7,8 +7,9 @@
 }
 .playerCard {
   display: flex;
-  padding: 10px;
+  padding: 6px;
   width: 480px;
+  // justify-content: space-between;
   align-items: center;
   border-radius: 45px;
   gap: 10px;
@@ -32,12 +33,18 @@
   border-radius: 360px;
 }
 
-.playerName {
-  color: #cf5300;
+.playerDetails {
+  display: flex;
   font-size: 25px;
+  gap: 12px;
+  color: #cf5300;
 }
 
 .playerInitials {
   font-size: 58px;
+  color: rgb(77, 77, 77);
+}
+
+.playerStatus {
   color: rgb(77, 77, 77);
 }
