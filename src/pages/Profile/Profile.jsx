@@ -3,8 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFillCameraFill } from "react-icons/bs";
 import "./Profile.scss";
+import GameDetail from "../GameDetail/GameDetail";
+import PlayerList from "../../components/PlayerList/PlayerList";
 
-const loggedUser = JSON.parse(localStorage.getItem("user"))
+const loggedUser = JSON.parse(localStorage.getItem("user"));
 // const userId = loggedUser.id
 
 const Profile = () => {
@@ -33,6 +35,10 @@ const Profile = () => {
           <li className="edit-action">Edit Profile</li>
         </Link>
       </ul>
+      <div>
+        {/* <GameDetail />
+        <PlayerList /> */}
+      </div>
     </div>
   );
 };

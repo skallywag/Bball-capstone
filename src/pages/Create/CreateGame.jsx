@@ -22,7 +22,6 @@ const CreateGame = () => {
       userid,
     },
     onSubmit: async (values, { resetForm }) => {
-      console.log(userid);
       try {
         const response = await axios.post(
           "http://localhost:5432/create",
@@ -35,7 +34,6 @@ const CreateGame = () => {
       resetForm({ values: "" });
     },
   });
-
   return (
     <div className="createGame-con">
       {gameCreated ? <span className="gameCreated">{gameCreated}</span> : null}
@@ -122,8 +120,8 @@ const CreateGame = () => {
               <option value="any" label="any" />
               <option value="casual" label="casual" />
               <option value="novice" label="novice" />
-              <option value="competative" label="intermediate" />
-              <option value="" label="advanced" />
+              <option value="intermediate" label="intermediate" />
+              <option value="advanced" label="advanced" />
             </select>
           </div>
           <label className="createLabel" htmlFor="age">

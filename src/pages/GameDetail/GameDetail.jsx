@@ -24,6 +24,7 @@ const GameDetail = () => {
   const [gameDetail, setGameDetail] = useState();
   const [isJoined, setIsJoined] = useState(null);
   const [players, setPlayers] = useState([]);
+  const [playerStatus, setPlayerStatus] = useState("");
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -104,6 +105,14 @@ const GameDetail = () => {
     }
   };
 
+  const handleStatusChange = async (value) => {
+    console.log(value);
+    try {
+      const response = await axios.put();
+    } catch {
+      console.error();
+    }
+  };
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
@@ -149,12 +158,16 @@ const GameDetail = () => {
             </button>
 
             <select
-              name="status"
-              // value={value}
+              name="playerStatus"
+              id="playerStatus"
               className="gameAction"
+              // value={playerStatus}
+              onChange={(e) => handleStatusChange(e.target.value)}
             >
               <option value="" label="Set Status" />
-              <option value="Here" label="Here" />
+              <option value="Here" label="Here">
+                Here
+              </option>
               <option value="Enroute" label="Enroute" />
               <option value="Be there soon" label="Be there soon" />
             </select>

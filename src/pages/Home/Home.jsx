@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       <img className="back-img" src={img2} alt="" />
       <div className="homePageHeader">
-        <h1 className="homeTitle">Welcome To Infinity Hoops</h1>
+        <h1 className="homeTitle">Welcome To Eternal Hoops</h1>
         <p className="welcomeMsg">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quaerat
           ut laborum reprehenderit numquam, maxime libero mollitia, ipsa minus
