@@ -55,12 +55,15 @@
   text-align: center;
   cursor: pointer;
   font-size: 25px;
+  outline: none;
 }
 
 .gameAction:hover {
   background-color: rgb(53, 52, 52);
 }
-
+.playerStatus {
+  border-style: none;
+}
 .overlay {
   background: rgba(204, 204, 204, 0.5);
   display: flex;

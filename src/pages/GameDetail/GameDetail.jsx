@@ -113,6 +113,14 @@ const GameDetail = () => {
             <h1 className="detailLocation">{gameDetail.venue}</h1>
             <div className="detailContent-con">
               <div className="detail-con">
+                <span className="detailTitle">Address</span>
+                <span className="detail">{gameDetail.address}</span>
+              </div>
+              <div className="detail-con">
+                <span className="detailTitle">City</span>
+                <span className="detail">{gameDetail.city}</span>
+              </div>
+              <div className="detail-con">
                 <span className="detailTitle">Skill Level</span>
                 <span className="detail">{gameDetail.skill}</span>
               </div>
@@ -139,6 +147,7 @@ const GameDetail = () => {
             <button onClick={() => leaveGame()} className="gameAction">
               Leave Game
             </button>
+
             <select
               name="status"
               // value={value}
