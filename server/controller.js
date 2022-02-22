@@ -162,4 +162,7 @@ module.exports = {
     );
     res.status(200).send(response[0]);
   },
+
+  // Deletes user created game
+  deleteGame: async (req, res) => {},
 };

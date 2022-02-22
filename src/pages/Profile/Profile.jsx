@@ -2,16 +2,19 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { BsFillCameraFill } from "react-icons/bs";
-import "./Profile.scss";
+// Components
 import GameCard from "../../components/GameCard/GameCard";
+import UpdateGame from "../../components/UpdateGame/UpdateGame";
+import { BsFillCameraFill } from "react-icons/bs";
+import { ClipLoader } from "react-spinners";
+import "./Profile.scss";
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [gameDetail, setGameDetail] = useState();
   const [players, setPlayers] = useState("");
   const [gameId, setGameId] = useState();
-  // console.log(gameId);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   useEffect(() => {
     const userId = user.id;
@@ -19,23 +22,25 @@ const Profile = () => {
       const { data } = await axios.post("http://localhost:5432/userGame", {
         userId,
       });
-      const response = await axios.post("http://localhost:5432/getPlayers", {
-        gameId,
-      });
-      setPlayers(data);
       setGameDetail(data);
       setGameId(data.id);
     }
     getCreatedGame();
   }, []);
 
-  const getPlayers = async () => {
-    try {
-    } catch {
-      console.error();
-    }
-  };
-  getPlayers();
+  // const getPlayers = async () => {
+  //   try {
+  //     const { data } = await axios.post("http://localhost:5432/getPlayers", {
+  //       gameId,
+  //     });
+  //     setPlayers(data);
+  //   } catch {
+  //     console.error();
+  //   }
+  // };
+  // getPlayers();
+
+  const deleteGame = async () => {};
 
   return (
     <div>
@@ -70,9 +75,29 @@ const Profile = () => {
           </Link>
         </ul>
       </div>
+      <div className="detailCon">
+        <GameCard gameId={gameId} players={players} gameDetail={gameDetail} />
 
-      <h1>Your Game</h1>
-      <GameCard gameDetail={gameDetail} players={players} />
+        {gameDetail ? (
+          <div className="gameAction-con">
+            <button
+              className="gameAction"
+              onClick={() => setShowUpdateModal(true)}
+            >
+              Update Game
+            </button>
+            <button className="gameAction" onClick={() => deleteGame()}>
+              Delete
+            </button>
+          </div>
+        ) : null}
+        {showUpdateModal && (
+          <UpdateGame
+            showUpdateModal={showUpdateModal}
+            setShowUpdateModal={setShowUpdateModal}
+          />
+        )}
+      </div>
     </div>
   );
 };

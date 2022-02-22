@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { ClipLoader } from "react-spinners";
+import React from "react";
 
 const GameCard = ({ players, gameDetail }) => {
   return (
@@ -36,9 +34,7 @@ const GameCard = ({ players, gameDetail }) => {
             </div>
           </div>
         </div>
-      ) : (
-        <ClipLoader />
-      )}
+      ) : null}
     </div>
   );
 };
