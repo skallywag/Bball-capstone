@@ -168,14 +168,10 @@ module.exports = {
     const { gameId, userId } = req.params;
 
     console.log(gameId, userId);
-    // const response = await sequelize.query(
-    //   `DELETE FROM games WHERE id = '${gameId}' AND userid = '${userId}'`
-    // );
   },
 
   // Update user created game
   updateGame: async (req, res) => {
-    // const { gameId } = req.params;
     const {
       venue,
       state,
@@ -199,9 +195,9 @@ module.exports = {
       agegroup = '${agegroup}',
       duration = '${duration}',
       skill = '${skill}',
-      userid = '${userid}',
+      userid = '${userid}'
 
-      WHERE '${gameId}' = 
+      WHERE '${gameId}' = id
     `
     );
     res.status(200).send(updateGame[0][0]);

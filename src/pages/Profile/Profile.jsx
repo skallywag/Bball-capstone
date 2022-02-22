@@ -42,19 +42,19 @@ const Profile = () => {
   // getPlayers();
 
   const deleteGame = async () => {
-    const userId = user.id;
-    try {
-      await axios.delete(
-        `http://localhost:5432/deleteGame/${gameId}/${userId}`
-      );
-    } catch {
-      console.error();
-    }
+    // const userId = user.id;
+    // try {
+    //   await axios.delete(
+    //     `http://localhost:5432/deleteGame/${gameId}/${userId}`
+    //   );
+    // } catch {
+    //   console.error();
+    // }
   };
 
   return (
     <div>
-      <div className="dashboard-con">
+      <div className="dashBoard-con">
         <div className="prof-card">
           <div className="prof-img-con">
             <BsFillCameraFill className="prof-img-icon"></BsFillCameraFill>
@@ -110,6 +110,7 @@ const Profile = () => {
           setShowUpdateModal={setShowUpdateModal}
           gameDetail={gameDetail}
           gameId={gameId}
+          // getCreatedGame={getCreatedGame}
         />
       )}
     </div>

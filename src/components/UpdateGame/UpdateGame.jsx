@@ -9,6 +9,7 @@ const UpdateGame = ({
   setShowUpdateModal,
   gameDetail,
   gameId,
+  getCreatedGame,
 }) => {
   // Local State
   const [gameUpdated, setGameUpdated] = useState("");
@@ -34,8 +35,10 @@ const UpdateGame = ({
           `http://localhost:5432/updateGame/`,
           values
         );
-        // setGameUpdated("Game Updated!");
+        setGameUpdated("Game Updated!");
         setShowUpdateModal(false);
+        // getCreatedGame();
+        window.location.reload();
       } catch {
         console.error();
       }
