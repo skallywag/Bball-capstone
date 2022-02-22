@@ -63,6 +63,7 @@ const SearchBar = () => {
         )}
         <div className="flex align-center search-bar-ctn">
           <IoMdBasketball className="search-icon" />
+
           <input
             value={input}
             onChange={(e) => handleInput(e.target.value)}

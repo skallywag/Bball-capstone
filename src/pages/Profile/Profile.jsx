@@ -1,28 +1,41 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsFillCameraFill } from "react-icons/bs";
 import "./Profile.scss";
-// import GameDetail from "../GameDetail/GameDetail";
-// import PlayerList from "../../components/PlayerList/PlayerList";
-import axios from "axios";
+import GameCard from "../../components/GameCard/GameCard";
 
 const Profile = () => {
-  const [usersGame, setUsersGame] = useState();
   const user = JSON.parse(localStorage.getItem("user"));
+  const [gameDetail, setGameDetail] = useState();
+  const [players, setPlayers] = useState("");
+  const [gameId, setGameId] = useState();
+  // console.log(gameId);
 
   useEffect(() => {
     const userId = user.id;
     async function getCreatedGame() {
-      const response = await axios.post("http://localhost:5432/userGame", {
+      const { data } = await axios.post("http://localhost:5432/userGame", {
         userId,
       });
-      const data = response.data;
-      setUsersGame(data);
-      console.log(data);
+      const response = await axios.post("http://localhost:5432/getPlayers", {
+        gameId,
+      });
+      setPlayers(data);
+      setGameDetail(data);
+      setGameId(data.id);
     }
     getCreatedGame();
   }, []);
+
+  const getPlayers = async () => {
+    try {
+    } catch {
+      console.error();
+    }
+  };
+  getPlayers();
 
   return (
     <div>
@@ -57,9 +70,9 @@ const Profile = () => {
           </Link>
         </ul>
       </div>
-      <div>
-        <div>Your Game</div>
-      </div>
+
+      <h1>Your Game</h1>
+      <GameCard gameDetail={gameDetail} players={players} />
     </div>
   );
 };

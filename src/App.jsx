@@ -17,7 +17,7 @@ import Search from "./pages/Search/Search";
 import CreateAcc from "./pages/Sign-up/CreateAcc";
 import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
-import GameDetail from "./pages/GameDetail/GameDetail";
+import Game from "./pages/Game/Game";
 // Components
 import "./App.scss";
 
@@ -46,7 +46,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<CreateAcc />} />
-        <Route path="/gameDetail" element={<GameDetail />} />
+        <Route path="/gameDetail" element={<Game />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {/* <Footer /> */}

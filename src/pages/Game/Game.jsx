@@ -14,14 +14,15 @@ import { setShowLogin } from "../../Redux/app";
 // Components
 import PlayerList from "../../components/PlayerList/PlayerList";
 // CSS
-import "./GameDetail.scss";
+import "./Game.scss";
+import GameCard from "../../components/GameCard/GameCard";
 
-const GameDetail = () => {
+const Game = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   // Local State
   const [gameDetail, setGameDetail] = useState();
-  const [isJoined, setIsJoined] = useState(null);
   const [players, setPlayers] = useState([]);
+  const [isJoined, setIsJoined] = useState(null);
   const [status, setStatus] = useState();
 
   //Global State/Hooks
@@ -126,40 +127,8 @@ const GameDetail = () => {
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
-        {gameDetail ? (
-          <div className="detailCard">
-            {/* <MapContainer /> */}
-            <h1 className="detailLocation">{gameDetail.venue}</h1>
-            <div className="detailContent-con">
-              <div className="detail-con">
-                <span className="detailTitle">Address</span>
-                <span className="detail">{gameDetail.address}</span>
-              </div>
-              <div className="detail-con">
-                <span className="detailTitle">City</span>
-                <span className="detail">{gameDetail.city}</span>
-              </div>
-              <div className="detail-con">
-                <span className="detailTitle">Skill Level</span>
-                <span className="detail">{gameDetail.skill}</span>
-              </div>
-              <div className="detail-con">
-                <span className="detailTitle">Duration</span>
-                <span className="detail">{gameDetail.duration}Min</span>
-              </div>
-              <div className="detail-con">
-                <span className="detailTitle">Age Group</span>
-                <span className="detail">{gameDetail.agegroup}</span>
-              </div>
-              <div className="detail-con">
-                <span className="detailTitle">Players</span>
-                <span className="detail">{players.length}</span>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <ClipLoader />
-        )}
+        <GameCard gameId={gameId} players={players} gameDetail={gameDetail} />
+
         {isJoined ? (
           <div className="gameAction-con">
             <button onClick={() => leaveGame()} className="gameAction">
@@ -192,4 +161,4 @@ const GameDetail = () => {
   );
 };
 
-export default GameDetail;
+export default Game;

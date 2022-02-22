@@ -1,5 +1,5 @@
 import React from "react";
-import SearchGames from "../../components/SearchGames/SearchGames";
+import SearchGames from "../../components/SearchBar/SearchGames";
 import "./Search.scss";
 
 const Search = () => {
