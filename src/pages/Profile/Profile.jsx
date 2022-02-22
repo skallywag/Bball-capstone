@@ -11,6 +11,7 @@ import "./Profile.scss";
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
+  // Local State
   const [gameDetail, setGameDetail] = useState();
   const [players, setPlayers] = useState("");
   const [gameId, setGameId] = useState();
@@ -40,7 +41,16 @@ const Profile = () => {
   // };
   // getPlayers();
 
-  const deleteGame = async () => {};
+  const deleteGame = async () => {
+    const userId = user.id;
+    try {
+      await axios.delete(
+        `http://localhost:5432/deleteGame/${gameId}/${userId}`
+      );
+    } catch {
+      console.error();
+    }
+  };
 
   return (
     <div>
@@ -75,9 +85,10 @@ const Profile = () => {
           </Link>
         </ul>
       </div>
-      <div className="detailCon">
-        <GameCard gameId={gameId} players={players} gameDetail={gameDetail} />
 
+      <div className="gameCon">
+        <span style={{ position: "absolute", top: "370px" }}>Your Game</span>
+        <GameCard gameId={gameId} players={players} gameDetail={gameDetail} />
         {gameDetail ? (
           <div className="gameAction-con">
             <button
@@ -91,13 +102,16 @@ const Profile = () => {
             </button>
           </div>
         ) : null}
-        {showUpdateModal && (
-          <UpdateGame
-            showUpdateModal={showUpdateModal}
-            setShowUpdateModal={setShowUpdateModal}
-          />
-        )}
       </div>
+
+      {showUpdateModal && (
+        <UpdateGame
+          showUpdateModal={showUpdateModal}
+          setShowUpdateModal={setShowUpdateModal}
+          gameDetail={gameDetail}
+          gameId={gameId}
+        />
+      )}
     </div>
   );
 };

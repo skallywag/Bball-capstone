@@ -6,7 +6,6 @@ const GameCard = ({ players, gameDetail }) => {
       {gameDetail ? (
         <div className="detailCard">
           <h1 className="detailLocation">{gameDetail.venue}</h1>
-
           <div className="detailContent-con">
             <div className="detail-con">
               <span className="detailTitle">Address</span>

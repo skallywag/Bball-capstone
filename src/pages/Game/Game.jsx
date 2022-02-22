@@ -2,20 +2,20 @@ import React from "react";
 import axios from "axios";
 import qs from "query-string";
 // React
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 // Router
 import { useLocation } from "react-router-dom";
 // Spinners
-import { ClipLoader } from "react-spinners";
+// import { ClipLoader } from "react-spinners";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 // App State
 import { setShowLogin } from "../../Redux/app";
 // Components
 import PlayerList from "../../components/PlayerList/PlayerList";
+import GameCard from "../../components/GameCard/GameCard";
 // CSS
 import "./Game.scss";
-import GameCard from "../../components/GameCard/GameCard";
 
 const Game = () => {
   const user = JSON.parse(localStorage.getItem("user"));

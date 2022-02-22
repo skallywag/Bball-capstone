@@ -4,7 +4,12 @@ import { useFormik } from "formik";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./UpdateGame.scss";
 
-const UpdateGame = ({ showUpdateModal, setShowUpdateModal }) => {
+const UpdateGame = ({
+  showUpdateModal,
+  setShowUpdateModal,
+  gameDetail,
+  gameId,
+}) => {
   // Local State
   const [gameUpdated, setGameUpdated] = useState("");
   const loggedUser = JSON.parse(localStorage.getItem("user"));
@@ -12,20 +17,21 @@ const UpdateGame = ({ showUpdateModal, setShowUpdateModal }) => {
 
   const formik = useFormik({
     initialValues: {
-      venue: "",
-      state: "",
-      city: "",
-      address: "",
-      zipcode: "",
-      skill: "",
-      age: "",
-      duration: "",
+      venue: gameDetail.venue,
+      state: gameDetail.state,
+      city: gameDetail.city,
+      address: gameDetail.address,
+      zipcode: gameDetail.zipcode,
+      skill: gameDetail.skill,
+      agegroup: gameDetail.agegroup,
+      duration: gameDetail.duration,
       userid,
+      gameId,
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post(
-          "http://localhost:5432/updateGame",
+        const response = await axios.put(
+          `http://localhost:5432/updateGame/`,
           values
         );
         // setGameUpdated("Game Updated!");
@@ -43,9 +49,11 @@ const UpdateGame = ({ showUpdateModal, setShowUpdateModal }) => {
           className="close-update"
           onClick={() => setShowUpdateModal(false)}
         />
+
         {gameUpdated ? (
           <span className="gameCreated">{gameUpdated}</span>
         ) : null}
+
         <form onSubmit={formik.handleSubmit}>
           <div className="createGame-inputs-con">
             <label className="createLabel" htmlFor="venue">

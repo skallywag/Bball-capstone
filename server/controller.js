@@ -146,6 +146,7 @@ module.exports = {
   // Remove a player from a game
   removePlayer: async (req, res) => {
     const { userId } = req.query;
+    console.log(userId);
     const response = await sequelize.query(
       `DELETE FROM players WHERE userid = '${userId}'`
     );
@@ -155,7 +156,6 @@ module.exports = {
   // Set Player Status for game
   setPlayerStatus: async (req, res) => {
     const { userId, value } = req.body;
-    // console.log(userId, value);
     const response = await sequelize.query(
       `UPDATE users SET status = '${value}' WHERE id = '${userId}'
       RETURNING status`
@@ -164,5 +164,46 @@ module.exports = {
   },
 
   // Deletes user created game
-  deleteGame: async (req, res) => {},
+  deleteGame: async (req, res) => {
+    const { gameId, userId } = req.params;
+
+    console.log(gameId, userId);
+    // const response = await sequelize.query(
+    //   `DELETE FROM games WHERE id = '${gameId}' AND userid = '${userId}'`
+    // );
+  },
+
+  // Update user created game
+  updateGame: async (req, res) => {
+    // const { gameId } = req.params;
+    const {
+      venue,
+      state,
+      city,
+      address,
+      zipcode,
+      agegroup,
+      duration,
+      skill,
+      userid,
+      gameId,
+    } = req.body;
+    const updateGame = await sequelize.query(
+      `UPDATE games
+      SET
+      venue = '${venue}',
+      state = '${state}',
+      city = '${city}',
+      address = '${address}',
+      zipcode = '${zipcode}',
+      agegroup = '${agegroup}',
+      duration = '${duration}',
+      skill = '${skill}',
+      userid = '${userid}',
+
+      WHERE '${gameId}' = 
+    `
+    );
+    res.status(200).send(updateGame[0][0]);
+  },
 };
