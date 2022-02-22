@@ -9,7 +9,7 @@ const app = express();
 const {
   createUser,
   userLogin,
-  getGames,
+  searchGames,
   createGame,
   getGame,
   joinGame,
@@ -36,7 +36,7 @@ const headers = {
 //Endpoints
 app.post("/register", createUser);
 app.post("/login", userLogin);
-app.post("/games", getGames);
+app.post("/SearchGames", searchGames);
 app.post("/create", createGame);
 app.post("/getPlayers", getPlayers);
 app.post("/userGame", getUsersGame);

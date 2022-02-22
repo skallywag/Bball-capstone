@@ -35,7 +35,7 @@ const SearchBar = () => {
     async function getGames() {
       try {
         const response = await axios.post(
-          "http://localhost:5432/games",
+          "http://localhost:5432/searchGames",
           search
         );
         setGamesList(response.data);

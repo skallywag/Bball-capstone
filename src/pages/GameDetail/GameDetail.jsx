@@ -16,9 +16,6 @@ import PlayerList from "../../components/PlayerList/PlayerList";
 // CSS
 import "./GameDetail.scss";
 
-// const user = JSON.parse(localStorage.getItem("user"));
-// let userId = Number(user.id);
-
 const GameDetail = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   // Local State

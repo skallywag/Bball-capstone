@@ -55,12 +55,12 @@ const Login = () => {
         dispatch(loginUser());
         dispatch(setShowLogin(false));
         navigate(location.pathname);
+        // window.location.reload();
       } catch {
         console.error((err) => {
           console.log(err.response.data);
         });
       }
-
       resetForm({ values: "" });
     },
     validate,

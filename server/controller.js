@@ -63,7 +63,7 @@ module.exports = {
   },
 
   // Users Search for Games
-  getGames: async (req, res) => {
+  searchGames: async (req, res) => {
     const { input } = req.body;
     //my Sub-optimal query
     const games = await sequelize.query(
@@ -105,7 +105,7 @@ module.exports = {
     res.status(200).send(createGame[0][0]);
   },
 
-  // Get game from id
+  // Get game from gameId
   getGame: async (req, res) => {
     const { id } = req.params;
     const game = await sequelize.query(
@@ -113,6 +113,7 @@ module.exports = {
     );
     res.status(200).send(game[0][0]);
   },
+
   // Grabs the game the user created
   getUsersGame: async (req, res) => {
     const { userId } = req.body;
@@ -150,6 +151,7 @@ module.exports = {
     );
     res.status(200).send(response[0][0]);
   },
+
   // Set Player Status for game
   setPlayerStatus: async (req, res) => {
     const { userId, value } = req.body;
