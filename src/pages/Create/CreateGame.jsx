@@ -84,11 +84,11 @@ const CreateGame = () => {
             Address:
           </label>
           <div className="createGame-input-con">
-            <GooglePlaces
+            <input
               value={formik.values.address}
               onChange={formik.handleChange}
               type="text"
-              // placeholder="Address"
+              placeholder="Address"
               name="address"
               className="createGame-input"
             />
