@@ -24,10 +24,7 @@ const CreateGame = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post(
-          "http://localhost:5432/create",
-          values
-        );
+        const response = await axios.post("/create", values);
         setGameCreated("Game Created!");
       } catch {
         console.error();

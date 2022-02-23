@@ -21,7 +21,7 @@ const Profile = () => {
   useEffect(() => {
     const userId = user.id;
     async function getCreatedGame() {
-      const { data } = await axios.post("http://localhost:5432/userGame", {
+      const { data } = await axios.post("/userGame", {
         userId,
       });
       setGameDetail(data);
@@ -45,9 +45,7 @@ const Profile = () => {
   const deleteGame = async () => {
     const userId = user.id;
     try {
-      await axios.delete(
-        `http://localhost:5432/deleteGame/${gameId}/${userId}`
-      );
+      await axios.delete(`/deleteGame/${gameId}/${userId}`);
     } catch {
       console.error();
     }

@@ -114,10 +114,7 @@ const Game = () => {
     let userId = Number(user.id);
     setStatus(value);
     try {
-      const response = await axios.put(
-        "http://localhost:5432/setPlayerStatus",
-        { userId, value }
-      );
+      const response = await axios.put("/setPlayerStatus", { userId, value });
       getPlayers();
       setStatus("Set Status");
     } catch {
