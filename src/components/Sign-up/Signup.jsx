@@ -69,10 +69,7 @@ const Signup = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post(
-          "http://localhost:5432/register",
-          values
-        );
+        const response = await axios.post("/register", values);
         setAcctCreated(response.data);
       } catch {
         console.error((err) => {
