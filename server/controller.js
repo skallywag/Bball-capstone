@@ -166,8 +166,11 @@ module.exports = {
   // Deletes user created game
   deleteGame: async (req, res) => {
     const { gameId, userId } = req.params;
+    const response = await sequelize.query(
+      `DELETE FROM players WHERE gameid = '${gameId}'`
+    );
 
-    console.log(gameId, userId);
+    console.log(gameId);
   },
 
   // Update user created game

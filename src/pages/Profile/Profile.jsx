@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // Components
 import GameCard from "../../components/GameCard/GameCard";
 import UpdateGame from "../../components/UpdateGame/UpdateGame";
+//
 import { BsFillCameraFill } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
 import "./Profile.scss";
@@ -42,14 +43,14 @@ const Profile = () => {
   // getPlayers();
 
   const deleteGame = async () => {
-    // const userId = user.id;
-    // try {
-    //   await axios.delete(
-    //     `http://localhost:5432/deleteGame/${gameId}/${userId}`
-    //   );
-    // } catch {
-    //   console.error();
-    // }
+    const userId = user.id;
+    try {
+      await axios.delete(
+        `http://localhost:5432/deleteGame/${gameId}/${userId}`
+      );
+    } catch {
+      console.error();
+    }
   };
 
   return (

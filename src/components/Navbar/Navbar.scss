@@ -1,18 +1,15 @@
-.nav-wrapper {
+.navWrapper {
   z-index: 100;
   position: fixed;
   width: 100%;
   top: 0;
 }
 
-.nav-bar {
+.navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: rgb(88, 87, 87); */
   padding: 20px;
-
-  background: rgb(97, 97, 97);
   background: linear-gradient(
     0deg,
     rgba(97, 97, 97, 1) 0%,
@@ -21,11 +18,9 @@
   );
 }
 
-.nav-title {
+.navTitle {
   font-size: 30px;
   color: #cf5300;
-  // padding-left: 130px;
-  align-self: center;
 }
 
 .hamburger {
@@ -39,7 +34,7 @@
   cursor: pointer;
 }
 
-.nav-login-btn {
+.navLogin-btn {
   background-color: black;
   color: #cf5300;
   border-radius: 5px;
@@ -49,7 +44,7 @@
   /* padding: 5px; */
   /* margin-right: 20px; */
 }
-.nav-login-btn:hover {
+.navLogin-btn:hover {
   background-color: #cf5300;
   color: black;
 }
@@ -63,7 +58,7 @@
   color: #cf5300;
 }
 
-.nav-logout-btn {
+.navLogout-btn {
   background-color: black;
   color: #cf5300;
   border-radius: 5px;
@@ -72,7 +67,7 @@
   cursor: pointer;
 }
 
-.logged-in-ctn {
+.loggedIn-ctn {
   display: flex;
   gap: 20px;
 }

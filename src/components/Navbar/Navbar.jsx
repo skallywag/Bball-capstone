@@ -33,8 +33,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="nav-wrapper">
-      <div className="nav-bar">
+    <div className="navWrapper">
+      <div className="navBar">
         {showSideNav ? (
           <ImCross
             className="cross"
@@ -46,21 +46,21 @@ const Navbar = () => {
             onClick={() => dispatch(toggleSideNav(!showSideNav))}
           />
         )}
-        <h1 className="nav-title">{pageTitle ? pageTitle : "Eternal Hoops"}</h1>
+        <h1 className="navTitle">{pageTitle ? pageTitle : "Eternal Hoops"}</h1>
 
         {isLoggedIn ? (
-          <div className="logged-in-ctn">
+          <div className="loggedIn-ctn">
             <Link style={{ fontStyle: "none", color: "black" }} to="profile">
               <CgProfile className="profile-icon"></CgProfile>
             </Link>
-            <button className="nav-logout-btn" onClick={userLogout}>
+            <button className="navLogout-btn" onClick={userLogout}>
               Log-out
             </button>
           </div>
         ) : (
           <button
             onClick={() => dispatch(setShowLogin(true))}
-            className="nav-login-btn"
+            className="navLogin-btn"
           >
             Login
           </button>

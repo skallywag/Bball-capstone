@@ -68,7 +68,7 @@ const SearchBar = () => {
             value={input}
             onChange={(e) => handleInput(e.target.value)}
             type="text"
-            placeholder="Search Games"
+            placeholder="Search Games by city/state"
             className="search-bar"
           />
         </div>

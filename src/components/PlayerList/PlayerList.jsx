@@ -1,13 +1,10 @@
 import React from "react";
-import axios from "axios";
-// React
-import { useEffect, useState } from "react";
 // Spinners
 import { ClipLoader } from "react-spinners";
 // CSS
 import "./PlayerList.scss";
 
-const PlayerList = ({ players, status }) => {
+const PlayerList = ({ players }) => {
   // Local State
 
   return (
