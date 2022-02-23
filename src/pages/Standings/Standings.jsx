@@ -80,6 +80,7 @@ const Standings = () => {
                   />
                   {team.Name}
                 </td>
+                <td>hello?</td>
                 <td>{team.Wins}</td>
                 <td>{team.Losses}</td>
                 <td>{team.Percentage}</td>
