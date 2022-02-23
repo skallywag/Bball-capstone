@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import "./CreateGame.scss";
-import GooglePlaces from "../../components/GooglePlaces/GooglePlaces";
 
 const CreateGame = () => {
   // Local State

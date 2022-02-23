@@ -16,7 +16,6 @@ import PlayerList from "../../components/PlayerList/PlayerList";
 import GameCard from "../../components/GameCard/GameCard";
 // CSS
 import "./Game.scss";
-import GooglePlaces from "../../components/GooglePlaces/GooglePlaces";
 
 const Game = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -37,9 +36,7 @@ const Game = () => {
   useEffect(() => {
     async function getGame() {
       try {
-        const response = await axios.get(
-          `http://localhost:5432/game/${gameId}`
-        );
+        const response = await axios.get(`/game/${gameId}`);
         const gameData = response.data;
         setGameDetail(gameData);
       } catch {
@@ -52,7 +49,7 @@ const Game = () => {
   useEffect(() => {
     async function initialPlayers() {
       try {
-        const { data } = await axios.post("http://localhost:5432/getPlayers", {
+        const { data } = await axios.post("/getPlayers", {
           gameId: Number(gameId),
         });
         setPlayers(data);
@@ -70,7 +67,7 @@ const Game = () => {
 
   const getPlayers = async () => {
     try {
-      const { data } = await axios.post("http://localhost:5432/getPlayers", {
+      const { data } = await axios.post("/getPlayers", {
         gameId: Number(gameId),
       });
       setPlayers(data);
@@ -83,9 +80,7 @@ const Game = () => {
     if (isLoggedIn) {
       let userId = user.id;
       try {
-        await axios.put(
-          `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
-        );
+        await axios.put(`/joinGame/${gameId}/?userId=${userId}`);
         setIsJoined(true);
         getPlayers();
       } catch {
@@ -100,9 +95,7 @@ const Game = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user.id;
     try {
-      await axios.delete(
-        `http://localhost:5432/removePlayer/?userId=${userId}`
-      );
+      await axios.delete(`/removePlayer/?userId=${userId}`);
       setIsJoined(false);
       getPlayers();
     } catch {
