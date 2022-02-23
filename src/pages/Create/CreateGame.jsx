@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import "./CreateGame.scss";
+import GooglePlaces from "../../components/GooglePlaces/GooglePlaces";
 
 const CreateGame = () => {
   // Local State
@@ -83,11 +84,11 @@ const CreateGame = () => {
             Address:
           </label>
           <div className="createGame-input-con">
-            <input
+            <GooglePlaces
               value={formik.values.address}
               onChange={formik.handleChange}
               type="text"
-              placeholder="Address"
+              // placeholder="Address"
               name="address"
               className="createGame-input"
             />

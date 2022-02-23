@@ -167,7 +167,7 @@ module.exports = {
   deleteGame: async (req, res) => {
     const { gameId, userId } = req.params;
     const response = await sequelize.query(
-      `DELETE FROM players WHERE gameid = '${gameId}'`
+      `DELETE FROM games WHERE gameid = '${gameId}'`
     );
 
     console.log(gameId);

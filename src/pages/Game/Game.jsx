@@ -16,6 +16,7 @@ import PlayerList from "../../components/PlayerList/PlayerList";
 import GameCard from "../../components/GameCard/GameCard";
 // CSS
 import "./Game.scss";
+import GooglePlaces from "../../components/GooglePlaces/GooglePlaces";
 
 const Game = () => {
   const user = JSON.parse(localStorage.getItem("user"));
