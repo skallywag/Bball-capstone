@@ -24,17 +24,7 @@ const {
 app.use(express.json());
 app.use(cors());
 
-// Comet Chat
-const appID = "{}";
-const apiKey = "{}";
-const url = "'https://api.cometchat.com/v2'";
-
-const headers = {
-  "Content-Type": "application/json",
-  appid: appID,
-  apikey: apiKey,
-};
-
+app.use(express.static(path.resolve(__dirname, "../build")));
 //Endpoints
 app.post("/register", createUser);
 app.post("/login", userLogin);
@@ -48,6 +38,10 @@ app.put("/setPlayerStatus", setPlayerStatus);
 app.get("/game/:id", getGame);
 app.delete("/removePlayer", removePlayer);
 app.delete("/deleteGame/:gameId/:userId", deleteGame);
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Warped to ${PORT}`);
