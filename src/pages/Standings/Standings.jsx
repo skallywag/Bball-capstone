@@ -76,7 +76,7 @@ const Standings = () => {
                   <img
                     alt="logo"
                     className="nba-logo"
-                    src={`/nbaIcons/${team.Name}.png`}
+                    src={`/nbaIcons/${team.Name.toLocaleLowerCase()}.png`}
                   />
                   {team.Name}
                 </td>
