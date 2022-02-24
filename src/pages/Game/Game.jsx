@@ -36,7 +36,9 @@ const Game = () => {
   useEffect(() => {
     async function getGame() {
       try {
-        const response = await axios.get(`/game/${gameId}`);
+        const response = await axios.get(
+          `http://localhost:5432/game/${gameId}`
+        );
         const gameData = response.data;
         setGameDetail(gameData);
       } catch {
@@ -49,7 +51,7 @@ const Game = () => {
   useEffect(() => {
     async function initialPlayers() {
       try {
-        const { data } = await axios.post("/getPlayers", {
+        const { data } = await axios.post("http://localhost:5432/getPlayers", {
           gameId: Number(gameId),
         });
         setPlayers(data);
@@ -67,7 +69,7 @@ const Game = () => {
 
   const getPlayers = async () => {
     try {
-      const { data } = await axios.post("/getPlayers", {
+      const { data } = await axios.post("http://localhost:5432/getPlayers", {
         gameId: Number(gameId),
       });
       setPlayers(data);
@@ -80,7 +82,9 @@ const Game = () => {
     if (isLoggedIn) {
       let userId = user.id;
       try {
-        await axios.put(`/joinGame/${gameId}/?userId=${userId}`);
+        await axios.put(
+          `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
+        );
         setIsJoined(true);
         getPlayers();
       } catch {
@@ -95,7 +99,9 @@ const Game = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user.id;
     try {
-      await axios.delete(`/removePlayer/?userId=${userId}`);
+      await axios.delete(
+        `http://localhost:5432/removePlayer/?userId=${userId}`
+      );
       setIsJoined(false);
       getPlayers();
     } catch {
@@ -107,7 +113,10 @@ const Game = () => {
     let userId = Number(user.id);
     setStatus(value);
     try {
-      const response = await axios.put("/setPlayerStatus", { userId, value });
+      const response = await axios.put(
+        "http://localhost:5432/setPlayerStatus",
+        { userId, value }
+      );
       getPlayers();
       setStatus("Set Status");
     } catch {

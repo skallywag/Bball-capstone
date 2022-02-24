@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 // Icons
 import {
   FaUserTag,
@@ -15,6 +16,7 @@ import "./Signup.scss";
 const Signup = () => {
   // Local State
   const [acctCreated, setAcctCreated] = useState(false);
+  const navigate = useNavigate();
 
   const validate = (values) => {
     let errors = {};
@@ -69,8 +71,14 @@ const Signup = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post("/register", values);
+        const response = await axios.post(
+          "http://localhost:5432/register",
+          values
+        );
         setAcctCreated(response.data);
+        setTimeout(() => {
+          navigate("/profile");
+        }, 1500);
       } catch {
         console.error((err) => {
           console.log(err.response.data);

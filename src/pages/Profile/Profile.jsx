@@ -21,7 +21,7 @@ const Profile = () => {
   useEffect(() => {
     const userId = user.id;
     async function getCreatedGame() {
-      const { data } = await axios.post("/userGame", {
+      const { data } = await axios.post("http://localhost:5432/userGame", {
         userId,
       });
       setGameDetail(data);

@@ -1,11 +1,11 @@
 require("dotenv").config();
-const { DATABASE_URL } = process.env;
+const { CONNECTION_STRING } = process.env;
 const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
-const res = require("express/lib/response");
-const { user } = require("pg/lib/defaults");
+// const res = require("express/lib/response");
+// const { user } = require("pg/lib/defaults");
 
-const sequelize = new Sequelize(DATABASE_URL, {
+const sequelize = new Sequelize(CONNECTION_STRING, {
   dialect: "postgres",
   dialectOptions: {
     ssl: {

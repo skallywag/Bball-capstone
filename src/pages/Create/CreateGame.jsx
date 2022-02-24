@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import "./CreateGame.scss";
 
 const CreateGame = () => {
@@ -8,6 +9,7 @@ const CreateGame = () => {
   const [gameCreated, setGameCreated] = useState("");
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const userid = loggedUser.id;
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -21,10 +23,20 @@ const CreateGame = () => {
       duration: "",
       userid,
     },
+
     onSubmit: async (values, { resetForm }) => {
+      // console.log(values.age);
+      console.log(values.age);
+      console.log(values.skill);
       try {
-        const response = await axios.post("/create", values);
+        const response = await axios.post(
+          "http://localhost:5432/create",
+          values
+        );
         setGameCreated("Game Created!");
+        setTimeout(() => {
+          navigate("/profile");
+        }, 1500);
       } catch {
         console.error();
       }
