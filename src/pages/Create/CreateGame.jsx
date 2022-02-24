@@ -26,8 +26,8 @@ const CreateGame = () => {
 
     onSubmit: async (values, { resetForm }) => {
       // console.log(values.age);
-      console.log(values.age);
-      console.log(values.skill);
+      console.log(values);
+      // console.log(values.skill);
       try {
         const response = await axios.post(
           "http://localhost:5432/create",
@@ -125,7 +125,7 @@ const CreateGame = () => {
               onChange={formik.handleChange}
               className="createGame-input"
             >
-              <option value="" label="Select Skill" />
+              <option value="" disabled label="Select Skill" />
               <option value="any" label="any" />
               <option value="casual" label="casual" />
               <option value="novice" label="novice" />
@@ -143,7 +143,7 @@ const CreateGame = () => {
               onChange={formik.handleChange}
               className="createGame-input"
             >
-              <option value="" label="Age group" />
+              <option value="" disabled label="Age group" />
               <option value="any" label="any" />
               <option value="16-18" label="16-18" />
               <option value="18-21" label="18-21" />
@@ -161,7 +161,7 @@ const CreateGame = () => {
               onChange={formik.handleChange}
               className="createGame-input"
             >
-              <option value="" label="Duration" />
+              <option value="" disabled label="Duration" />
               <option value="any" label="any" />
               <option value="30" label="30min" />
               <option value="60" label="60min" />

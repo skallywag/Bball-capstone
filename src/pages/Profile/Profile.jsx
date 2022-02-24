@@ -28,7 +28,10 @@ const Profile = () => {
       setGameId(data.id);
     }
     getCreatedGame();
-  }, []);
+    // setTimeout(() => {
+    //   getPlayers();
+    // }, 2000);
+  }, [gameDetail]);
 
   // const getPlayers = async () => {
   //   try {
@@ -40,12 +43,10 @@ const Profile = () => {
   //     console.error();
   //   }
   // };
-  // getPlayers();
 
   const deleteGame = async () => {
-    const userId = user.id;
     try {
-      await axios.delete(`/deleteGame/${gameId}/${userId}`);
+      await axios.delete(`http://localhost:5432/deleteGame/${gameId}`);
     } catch {
       console.error();
     }
@@ -109,7 +110,6 @@ const Profile = () => {
           setShowUpdateModal={setShowUpdateModal}
           gameDetail={gameDetail}
           gameId={gameId}
-          // getCreatedGame={getCreatedGame}
         />
       )}
     </div>

@@ -165,9 +165,9 @@ module.exports = {
 
   // Deletes user created game
   deleteGame: async (req, res) => {
-    const { gameId, userId } = req.params;
+    const { gameId } = req.params;
     const response = await sequelize.query(
-      `DELETE FROM games WHERE gameid = '${gameId}'`
+      `DELETE FROM games WHERE id = '${gameId}'`
     );
 
     console.log(gameId);
@@ -181,7 +181,7 @@ module.exports = {
       city,
       address,
       zipcode,
-      agegroup,
+      age,
       duration,
       skill,
       userid,
@@ -195,7 +195,7 @@ module.exports = {
       city = '${city}',
       address = '${address}',
       zipcode = '${zipcode}',
-      agegroup = '${agegroup}',
+      agegroup = '${age}',
       duration = '${duration}',
       skill = '${skill}',
       userid = '${userid}'

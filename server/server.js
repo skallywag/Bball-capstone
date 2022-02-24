@@ -37,7 +37,7 @@ app.put("/updateGame/", updateGame);
 app.put("/setPlayerStatus", setPlayerStatus);
 app.get("/game/:id", getGame);
 app.delete("/removePlayer", removePlayer);
-app.delete("/deleteGame/:gameId/:userId", deleteGame);
+app.delete("/deleteGame/:gameId", deleteGame);
 
 // app.get("/*", function (req, res) {
 //   res.sendFile(path.join(__dirname, "../build", "index.html"));

@@ -9,10 +9,9 @@ const UpdateGame = ({
   setShowUpdateModal,
   gameDetail,
   gameId,
-  getCreatedGame,
 }) => {
   // Local State
-  const [gameUpdated, setGameUpdated] = useState("");
+  // const [gameUpdated, setGameUpdated] = useState("");
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const userid = loggedUser.id;
 
@@ -24,7 +23,7 @@ const UpdateGame = ({
       address: gameDetail.address,
       zipcode: gameDetail.zipcode,
       skill: gameDetail.skill,
-      agegroup: gameDetail.agegroup,
+      age: gameDetail.age,
       duration: gameDetail.duration,
       userid,
       gameId,
@@ -35,9 +34,10 @@ const UpdateGame = ({
           `http://localhost:5432/updateGame`,
           values
         );
-        setGameUpdated("Game Updated!");
+        // setGameUpdated("Game Updated!");
+
         setShowUpdateModal(false);
-        // getCreatedGame();
+
         window.location.reload();
       } catch {
         console.error();
@@ -45,6 +45,7 @@ const UpdateGame = ({
       resetForm({ values: "" });
     },
   });
+  console.log(formik.values.age);
   return (
     <div className={`overlay ${showUpdateModal ? "show" : "hide"}`}>
       <div className="update-con">
@@ -52,10 +53,6 @@ const UpdateGame = ({
           className="close-update"
           onClick={() => setShowUpdateModal(false)}
         />
-
-        {gameUpdated ? (
-          <span className="gameCreated">{gameUpdated}</span>
-        ) : null}
 
         <form onSubmit={formik.handleSubmit}>
           <div className="createGame-inputs-con">
@@ -136,7 +133,7 @@ const UpdateGame = ({
                 onChange={formik.handleChange}
                 className="createGame-input"
               >
-                <option value="" label="Select Skill" />
+                <option value="" disabled label="Select Skill" />
                 <option value="any" label="any" />
                 <option value="casual" label="casual" />
                 <option value="novice" label="novice" />
@@ -154,7 +151,7 @@ const UpdateGame = ({
                 onChange={formik.handleChange}
                 className="createGame-input"
               >
-                <option value="" label="Age group" />
+                <option value="" disabled label="Age group" />
                 <option value="any" label="any" />
                 <option value="16-18" label="16-18" />
                 <option value="18-21" label="18-21" />
@@ -172,7 +169,7 @@ const UpdateGame = ({
                 onChange={formik.handleChange}
                 className="createGame-input"
               >
-                <option value="" label="Duration" />
+                <option value="" disabled label="Duration" />
                 <option value="any" label="any" />
                 <option value="30" label="30min" />
                 <option value="60" label="60min" />

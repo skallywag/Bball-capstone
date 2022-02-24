@@ -21,7 +21,7 @@ const GameCard = ({ players, gameDetail }) => {
             </div>
             <div className="detail-con">
               <span className="detailTitle">Duration</span>
-              <span className="detail">{gameDetail.duration}Min</span>
+              <span className="detail">{gameDetail.duration}</span>
             </div>
             <div className="detail-con">
               <span className="detailTitle">Age Group</span>
@@ -31,6 +31,10 @@ const GameCard = ({ players, gameDetail }) => {
               <span className="detailTitle">Players</span>
               <span className="detail">{players.length}</span>
             </div>
+            {/* <div className="detail-con">
+              <span className="detailTitle">Host</span>
+              <span className="detail">{user.firstname}</span>
+            </div> */}
           </div>
         </div>
       ) : null}
