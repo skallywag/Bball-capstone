@@ -170,7 +170,7 @@ module.exports = {
       `DELETE FROM games WHERE id = '${gameId}'`
     );
 
-    console.log(gameId);
+    res.status(200).send(response[0][0]);
   },
 
   // Update user created game

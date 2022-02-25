@@ -4,7 +4,7 @@ import qs from "query-string";
 // React
 import { useState, useEffect } from "react";
 // Router
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 // App State
@@ -26,6 +26,7 @@ const Game = () => {
   const [status, setStatus] = useState();
   const [showUpdateGame, setShowUpdateGame] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  // const [host, setHost] = useState(null);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -34,7 +35,7 @@ const Game = () => {
 
   // Constants
   const { gameId } = qs.parse(location.search);
-  const isHost = user.id === gameDetail?.userid;
+  const host = user.id === gameDetail?.userid;
 
   useEffect(() => {
     async function getGame() {
@@ -129,20 +130,11 @@ const Game = () => {
     }
   };
 
-  // const handleDeleteGame = async () => {
-  //   // try {
-  //   //   await axios.delete(`http://localhost:5432/deleteGame/${gameId}`);
-  //   //   window.localStorage.removeItem("gameId");
-  //   // } catch {
-  //   //   console.error();
-  //   // }
-  // };
-
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
         <GameCard gameId={gameId} gameDetail={gameDetail} players={players} />
-        {isHost && (
+        {host ? (
           <div className="gameAction-con">
             <button
               onClick={() => setShowUpdateGame(true)}
@@ -155,7 +147,7 @@ const Game = () => {
               Delete
             </button>
           </div>
-        )}
+        ) : null}
         {isJoined ? (
           <div className="gameAction-con">
             <button onClick={() => leaveGame()} className="gameAction">
@@ -194,7 +186,11 @@ const Game = () => {
         />
       )}
       {showDelete && (
-        <ConfirmDelete showDelete={showDelete} setShowDelete={setShowDelete} />
+        <ConfirmDelete
+          showDelete={showDelete}
+          setShowDelete={setShowDelete}
+          gameId={gameId}
+        />
       )}
     </div>
   );

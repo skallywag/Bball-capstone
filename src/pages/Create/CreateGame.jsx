@@ -30,12 +30,11 @@ const CreateGame = () => {
           "http://localhost:5432/create",
           values
         );
-        console.log(response.data.id);
         localStorage.removeItem("gameId");
         localStorage.setItem("gameId", JSON.stringify(response.data.id));
         setGameCreated("Game Created!");
         setTimeout(() => {
-          navigate("/");
+          navigate(`/gameDetail`);
         }, 1500);
       } catch {
         console.error();
