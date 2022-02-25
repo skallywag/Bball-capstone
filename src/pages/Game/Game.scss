@@ -16,7 +16,7 @@
 }
 
 .detailLocation {
-  color: #cf5300;
+  // color: #cf5300;
   font-size: 40px;
   border-bottom: 1px solid whitesmoke;
 }
@@ -61,6 +61,7 @@
 
 .gameAction:hover {
   background-color: rgb(53, 52, 52);
+  color: #cf5300;
 }
 .playerStatus {
   border-style: none;

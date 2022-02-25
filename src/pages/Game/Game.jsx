@@ -4,9 +4,7 @@ import qs from "query-string";
 // React
 import { useState, useEffect } from "react";
 // Router
-import { useLocation } from "react-router-dom";
-// Spinners
-// import { ClipLoader } from "react-spinners";
+import { useLocation, useNavigate } from "react-router-dom";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 // App State
@@ -14,6 +12,8 @@ import { setShowLogin } from "../../Redux/app";
 // Components
 import PlayerList from "../../components/PlayerList/PlayerList";
 import GameCard from "../../components/GameCard/GameCard";
+import UpdateGame from "../../components/UpdateGame/UpdateGame";
+import ConfirmDelete from "../../components/ConfirmDelete/ConfirmDelete";
 // CSS
 import "./Game.scss";
 
@@ -24,25 +24,30 @@ const Game = () => {
   const [players, setPlayers] = useState([]);
   const [isJoined, setIsJoined] = useState(null);
   const [status, setStatus] = useState();
+  const [showUpdateGame, setShowUpdateGame] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
-
-  // grab search parameter, convert to an obj
   const location = useLocation();
+
+  // Constants
   const { gameId } = qs.parse(location.search);
+  const isHost = user.id === gameDetail?.userid;
 
   useEffect(() => {
     async function getGame() {
-      try {
-        const response = await axios.get(
-          `http://localhost:5432/game/${gameId}`
-        );
-        const gameData = response.data;
-        setGameDetail(gameData);
-      } catch {
-        console.error();
+      if (gameId) {
+        try {
+          const response = await axios.get(
+            `http://localhost:5432/game/${gameId}`
+          );
+          const gameData = response.data;
+          setGameDetail(gameData);
+        } catch {
+          console.error();
+        }
       }
     }
     getGame();
@@ -80,7 +85,7 @@ const Game = () => {
 
   const joinGame = async () => {
     if (isLoggedIn) {
-      let userId = user.id;
+      const userId = user.id;
       try {
         await axios.put(
           `http://localhost:5432/joinGame/${gameId}/?userId=${userId}`
@@ -124,11 +129,33 @@ const Game = () => {
     }
   };
 
+  // const handleDeleteGame = async () => {
+  //   // try {
+  //   //   await axios.delete(`http://localhost:5432/deleteGame/${gameId}`);
+  //   //   window.localStorage.removeItem("gameId");
+  //   // } catch {
+  //   //   console.error();
+  //   // }
+  // };
+
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
-        <GameCard gameId={gameId} players={players} gameDetail={gameDetail} />
+        <GameCard gameId={gameId} gameDetail={gameDetail} players={players} />
+        {isHost && (
+          <div className="gameAction-con">
+            <button
+              onClick={() => setShowUpdateGame(true)}
+              className="gameAction"
+            >
+              Update Game
+            </button>
 
+            <button onClick={() => setShowDelete(true)} className="gameAction">
+              Delete
+            </button>
+          </div>
+        )}
         {isJoined ? (
           <div className="gameAction-con">
             <button onClick={() => leaveGame()} className="gameAction">
@@ -157,6 +184,18 @@ const Game = () => {
         )}
       </div>
       <PlayerList players={players} status={status} />
+
+      {showUpdateGame && (
+        <UpdateGame
+          showUpdateGame={showUpdateGame}
+          setShowUpdateGame={setShowUpdateGame}
+          gameId={gameId}
+          gameDetail={gameDetail}
+        />
+      )}
+      {showDelete && (
+        <ConfirmDelete showDelete={showDelete} setShowDelete={setShowDelete} />
+      )}
     </div>
   );
 };

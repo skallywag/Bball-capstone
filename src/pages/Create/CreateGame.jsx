@@ -25,17 +25,17 @@ const CreateGame = () => {
     },
 
     onSubmit: async (values, { resetForm }) => {
-      // console.log(values.age);
-      console.log(values);
-      // console.log(values.skill);
       try {
         const response = await axios.post(
           "http://localhost:5432/create",
           values
         );
+        console.log(response.data.id);
+        localStorage.removeItem("gameId");
+        localStorage.setItem("gameId", JSON.stringify(response.data.id));
         setGameCreated("Game Created!");
         setTimeout(() => {
-          navigate("/profile");
+          navigate("/");
         }, 1500);
       } catch {
         console.error();
@@ -43,6 +43,7 @@ const CreateGame = () => {
       resetForm({ values: "" });
     },
   });
+
   return (
     <div className="createGame-con">
       {gameCreated ? <span className="gameCreated">{gameCreated}</span> : null}

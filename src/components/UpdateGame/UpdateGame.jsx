@@ -5,15 +5,23 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import "./UpdateGame.scss";
 
 const UpdateGame = ({
-  showUpdateModal,
-  setShowUpdateModal,
+  showUpdateGame,
+  setShowUpdateGame,
   gameDetail,
   gameId,
 }) => {
   // Local State
-  // const [gameUpdated, setGameUpdated] = useState("");
   const loggedUser = JSON.parse(localStorage.getItem("user"));
   const userid = loggedUser.id;
+
+  // const validate = (values) => {
+  //   const errors = {};
+
+  //   if (!values) {
+  //     errors.values = "Required";
+  //   }
+  //   return errors;
+  // };
 
   const formik = useFormik({
     initialValues: {
@@ -23,11 +31,12 @@ const UpdateGame = ({
       address: gameDetail.address,
       zipcode: gameDetail.zipcode,
       skill: gameDetail.skill,
-      age: gameDetail.age,
+      age: gameDetail.agegroup,
       duration: gameDetail.duration,
       userid,
       gameId,
     },
+
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await axios.put(
@@ -35,23 +44,22 @@ const UpdateGame = ({
           values
         );
         // setGameUpdated("Game Updated!");
-
-        setShowUpdateModal(false);
-
+        setShowUpdateGame(false);
         window.location.reload();
       } catch {
         console.error();
       }
       resetForm({ values: "" });
     },
+    // validate,
   });
-  console.log(formik.values.age);
+
   return (
-    <div className={`overlay ${showUpdateModal ? "show" : "hide"}`}>
+    <div className={`overlay ${showUpdateGame ? "show" : "hide"}`}>
       <div className="update-con">
         <AiFillCloseCircle
           className="close-update"
-          onClick={() => setShowUpdateModal(false)}
+          onClick={() => setShowUpdateGame(false)}
         />
 
         <form onSubmit={formik.handleSubmit}>
