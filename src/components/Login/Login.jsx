@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,8 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import "./Login.scss";
 
 const Login = () => {
+  // Local State
+  const [logInError, setLoginError] = useState("");
   // Global State
   const { showLogin } = useSelector((state) => state.showLogin);
   // Hooks
@@ -55,11 +57,9 @@ const Login = () => {
         dispatch(loginUser());
         dispatch(setShowLogin(false));
         navigate(location.pathname);
-        window.location.reload();
-      } catch {
-        console.error((err) => {
-          console.log(err.response.data);
-        });
+        // window.location.reload();
+      } catch (error) {
+        setLoginError(error.response.data);
       }
       resetForm({ values: "" });
     },
@@ -68,6 +68,7 @@ const Login = () => {
   return (
     <div className={`overlay ${showLogin ? "show" : "hide"}`}>
       <div className="login-con">
+        {logInError && <span className="loginError">{logInError}</span>}
         <AiFillCloseCircle
           className="close-login"
           onClick={() => dispatch(setShowLogin(false))}

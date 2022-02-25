@@ -18,6 +18,7 @@ import CreateAcc from "./pages/Sign-up/CreateAcc";
 import CreateGame from "./pages/Create/CreateGame";
 import Profile from "./pages/Profile/Profile";
 import Game from "./pages/Game/Game";
+import Footer from "./components/Footer/Footer";
 // Components
 import "./App.scss";
 
@@ -49,9 +50,9 @@ function App() {
         <Route path="/gameDetail" element={<Game />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      {/* </div> */}
+      {/* </div> */}
       {/* <Footer /> */}
-      {/* </div> */}
-      {/* </div> */}
     </Router>
   );
 }

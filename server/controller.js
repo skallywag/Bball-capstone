@@ -22,7 +22,7 @@ module.exports = {
       `SELECT * FROM users WHERE username = '${userName}'`
     );
     if (checkUser[1].rowCount !== 0) {
-      res.status(500).send("Username already Exists");
+      res.status(500).send("Email already Exists");
     } else {
       const salt = bcrypt.genSaltSync(10);
       const passwordHash = bcrypt.hashSync(password, salt);
