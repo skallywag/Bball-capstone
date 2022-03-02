@@ -1,22 +1,35 @@
-import React from "react";
-import "./Home.scss";
-// import "../../../public/page-backgrounds/home.jpg"
-const backGroundImg =
-  "https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80";
+import React, { useRef, useEffect } from "react";
+import { init } from "ityped";
 
-const img2 = "https://images6.alphacoders.com/323/thumb-1920-323997.jpg";
+import "./Home.scss";
+const homeImg = "https://images6.alphacoders.com/323/thumb-1920-323997.jpg";
 
 const Home = () => {
+  const textRef = useRef();
+  useEffect(() => {
+    init(textRef.current, {
+      showCursor: false,
+      typeSpeed: 120,
+      backSpeed: 30,
+      loop: true,
+      strings: ["Anytime", "Anywhere"],
+    });
+  }, []);
+
   return (
     <div>
-      <img className="back-img" src={img2} alt="" />
+      <img className="back-img" src={homeImg} alt="basketball-img" />
       <div className="homePageHeader">
+        <div>
+          <span
+            style={{ fontSize: "60px", color: "#cf5300", padding: "1px" }}
+            ref={textRef}
+          ></span>
+        </div>
         <h1 className="homeTitle">Welcome To Eternal Hoops</h1>
         <p className="welcomeMsg">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quaerat
-          ut laborum reprehenderit numquam, maxime libero mollitia, ipsa minus
-          quas sit aperiam repellendus officia veritatis, voluptatibus unde
-          porro? Doloribus, incidunt?
+          Never go to the gym or your place of exercise <br /> hoping there will
+          be a group playing some hoops. <br />
         </p>
       </div>
     </div>

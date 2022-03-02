@@ -13,6 +13,7 @@ const ConfirmDelete = ({ showDelete, setShowDelete, gameId }) => {
         `http://localhost:5432/deleteGame/${gameId}`
       );
       setDeleted("Game Deleted!");
+      localStorage.removeItem("gameId");
       setTimeout(() => {
         setShowDelete(false);
         navigate("/");

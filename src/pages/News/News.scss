@@ -22,6 +22,11 @@
   border-radius: 15px;
 }
 
+.news-card:hover {
+  cursor: pointer;
+  background-color: rgb(71, 71, 71);
+}
+
 .img-con {
   position: relative;
 }

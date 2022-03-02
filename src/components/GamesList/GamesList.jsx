@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import qs from "query-string";
 import "./GamesList.scss";
 
 const GamesList = ({ gamesList }) => {
+  // const [players, setPlayers] = useState([]);
+  // const [gameId, setGameId] = useState([]);
+
+  // useEffect(() => {
+  //   async function initialPlayers() {
+
+  //     try {
+  //       const { data } = await axios.post("http://localhost:5432/getPlayers", {
+  //         gameId: Number(gameId),
+  //       });
+  //       setPlayers(data);
+  //     } catch {
+  //       console.error();
+  //     }
+  //   }
+  //   initialPlayers();
+  // }, []);
+
   return (
     <div className="gameCard-con">
       {gamesList.map((game) => {

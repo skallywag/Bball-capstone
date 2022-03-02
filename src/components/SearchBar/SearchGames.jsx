@@ -19,6 +19,7 @@ const SearchBar = () => {
   //Local State
   const [input, setInput] = useState("");
   const [gamesList, setGamesList] = useState([]);
+  // console.log(gamesList);
   // const [currentPlayers, setCurrentPlayers] = useState([]);
   //Global State
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -43,10 +44,6 @@ const SearchBar = () => {
         // const players = await axios.post("/getPlayers");
         // setCurrentPlayers(players.data);
         // console.log(players);
-      } catch {
-        console.error();
-      }
-      try {
       } catch {
         console.error();
       }

@@ -26,7 +26,6 @@ const Game = () => {
   const [status, setStatus] = useState();
   const [showUpdateGame, setShowUpdateGame] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  // const [host, setHost] = useState(null);
 
   //Global State/Hooks
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
@@ -35,7 +34,7 @@ const Game = () => {
 
   // Constants
   const { gameId } = qs.parse(location.search);
-  const host = user.id === gameDetail?.userid;
+  const host = user?.id === gameDetail?.userid;
 
   useEffect(() => {
     async function getGame() {

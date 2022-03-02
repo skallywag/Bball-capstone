@@ -6,6 +6,7 @@ import "./Profile.scss";
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const gameId = JSON.parse(localStorage.getItem("gameId"));
+  console.log(gameId);
 
   return (
     <div className="dashBoard-con">
@@ -22,22 +23,35 @@ const Profile = () => {
           <h1>{user.email}</h1>
         </div>
       </div>
-      <ul className="prof-actions">
-        <Link
-          to=""
-          className="prof-link"
-          onClick={() => alert("work in progress")}
-        >
-          <li className="img-action">Upload Image</li>
-        </Link>
-        <Link
-          to=""
-          className="prof-link"
-          onClick={() => alert("work in progress")}
-        >
-          <li className="edit-action">Edit Profile</li>
-        </Link>
-      </ul>
+      <div>
+        <ul className="prof-actions">
+          <Link
+            to=""
+            className="prof-link"
+            onClick={() => alert("work in progress")}
+          >
+            <li className="img-action">Upload Image</li>
+          </Link>
+          <Link
+            to=""
+            className="prof-link"
+            onClick={() => alert("work in progress")}
+          >
+            <li className="edit-action">Edit Profile</li>
+          </Link>
+        </ul>
+        <div>
+          {gameId && (
+            <Link
+              to={`/gameDetail/?gameId=${gameId}`}
+              className="gameAction"
+              style={{ textDecoration: "none" }}
+            >
+              Your Game
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
