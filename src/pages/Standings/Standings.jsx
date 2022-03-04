@@ -27,14 +27,14 @@ const Standings = () => {
   //   async function getStandings() {
   //     try {
   //       const response = await axios.get(
-
+  //         ""
   //       );
   //       const teams = response.data;
-
   //     } catch {
   //       console.error();
   //     }
   //   }
+  //   getStandings();
   // }, []);
   return (
     <div className="standings-con">
@@ -76,7 +76,7 @@ const Standings = () => {
                   <img
                     alt="logo"
                     className="nba-logo"
-                    src={`/nbaIcons/${team.Name.toLocaleLowerCase()}.png`}
+                    src={`/nbaIcons/${team.Name.toLowerCase()}.png`}
                   />
                   {team.Name}
                 </td>

@@ -1,6 +1,6 @@
 Welcome to my Web-site, Eternal Hoops!
 It is a website where you can create and host pickup basketball games.
-Anytime. Anywhere. Any Location.
+Anytime. Anywhere.
 
 Features of the website include:
 Users can register and login to their account.
