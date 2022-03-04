@@ -40,9 +40,7 @@ const Game = () => {
     async function getGame() {
       if (gameId) {
         try {
-          const response = await axios.get(
-            `http://localhost:5432/game/${gameId}`
-          );
+          const response = await axios.get(`/game/${gameId}`);
           const gameData = response.data;
           setGameDetail(gameData);
         } catch {

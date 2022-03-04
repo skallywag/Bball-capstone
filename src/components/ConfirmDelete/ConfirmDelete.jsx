@@ -9,9 +9,7 @@ const ConfirmDelete = ({ showDelete, setShowDelete, gameId }) => {
 
   const handleDeleteGame = async () => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5432/deleteGame/${gameId}`
-      );
+      const response = await axios.delete(`/deleteGame/${gameId}`);
       setDeleted("Game Deleted!");
       localStorage.removeItem("gameId");
       setTimeout(() => {

@@ -19,8 +19,6 @@ const SearchBar = () => {
   //Local State
   const [input, setInput] = useState("");
   const [gamesList, setGamesList] = useState([]);
-  // console.log(gamesList);
-  // const [currentPlayers, setCurrentPlayers] = useState([]);
   //Global State
   const { isLoggedIn } = useSelector((state) => state.isLoggedIn);
   //Hooks
@@ -36,14 +34,8 @@ const SearchBar = () => {
     const search = { input: input };
     async function getGames() {
       try {
-        const response = await axios.post(
-          "http://localhost:5432/searchGames",
-          search
-        );
+        const response = await axios.post("/searchGames", search);
         setGamesList(response.data);
-        // const players = await axios.post("/getPlayers");
-        // setCurrentPlayers(players.data);
-        // console.log(players);
       } catch {
         console.error();
       }

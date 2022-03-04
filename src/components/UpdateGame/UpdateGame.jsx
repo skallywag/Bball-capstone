@@ -39,10 +39,7 @@ const UpdateGame = ({
 
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.put(
-          `http://localhost:5432/updateGame`,
-          values
-        );
+        const response = await axios.put(`/updateGame`, values);
         // setGameUpdated("Game Updated!");
         setShowUpdateGame(false);
         window.location.reload();

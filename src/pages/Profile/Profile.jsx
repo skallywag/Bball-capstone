@@ -6,7 +6,6 @@ import "./Profile.scss";
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const gameId = JSON.parse(localStorage.getItem("gameId"));
-  console.log(gameId);
 
   return (
     <div className="dashBoard-con">

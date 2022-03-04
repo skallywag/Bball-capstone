@@ -26,10 +26,7 @@ const CreateGame = () => {
 
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post(
-          "http://localhost:5432/create",
-          values
-        );
+        const response = await axios.post("/create", values);
 
         localStorage.removeItem("gameId");
         localStorage.setItem("gameId", JSON.stringify(response.data.id));
