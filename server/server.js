@@ -24,7 +24,7 @@ const {
 app.use(express.json());
 app.use(cors());
 
-// app.use(express.static(path.resolve(__dirname, "../build")));
+app.use(express.static(path.resolve(__dirname, "../build")));
 //Endpoints
 app.post("/register", createUser);
 app.post("/login", userLogin);
@@ -39,9 +39,9 @@ app.get("/game/:id", getGame);
 app.delete("/removePlayer", removePlayer);
 app.delete("/deleteGame/:gameId", deleteGame);
 
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "../build", "index.html"));
-// });
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Warped to ${PORT}`);
