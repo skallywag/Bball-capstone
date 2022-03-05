@@ -1,11 +1,11 @@
 import React from "react";
 
 const GameCard = ({ players, gameDetail }) => {
-  // const host = players.map((player) => {
-  //   if (player.userid === gameDetail.userid) {
-  //     return player.firstname;
-  //   }
-  // });
+  const host = players.map((player) => {
+    if (player.userid === gameDetail.userid) {
+      return player.firstname;
+    }
+  });
   return (
     <div className="detailCon">
       {gameDetail ? (
@@ -36,12 +36,12 @@ const GameCard = ({ players, gameDetail }) => {
               <span className="detailTitle">Players</span>
               <span className="detail">{players.length}</span>
             </div>
-            {/* {host && (
+            {host ? (
               <div className="detail-con">
                 <span className="detailTitle">Host</span>
                 <span className="detail">{host}</span>
               </div>
-            )} */}
+            ) : null}
           </div>
         </div>
       ) : null}
