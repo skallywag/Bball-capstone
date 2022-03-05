@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
-const GameCard = ({ players, gameDetail, gameId }) => {
-  const host = players.map((player) => {
-    if (player.userid === gameDetail.userid) {
-      return player.firstname;
-    }
-  });
+const GameCard = ({ players, gameDetail }) => {
+  // const host = players.map((player) => {
+  //   if (player.userid === gameDetail.userid) {
+  //     return player.firstname;
+  //   }
+  // });
   return (
     <div className="detailCon">
       {gameDetail ? (
@@ -37,10 +36,12 @@ const GameCard = ({ players, gameDetail, gameId }) => {
               <span className="detailTitle">Players</span>
               <span className="detail">{players.length}</span>
             </div>
-            <div className="detail-con">
-              <span className="detailTitle">Host</span>
-              <span className="detail">{host}</span>
-            </div>
+            {/* {host && (
+              <div className="detail-con">
+                <span className="detailTitle">Host</span>
+                <span className="detail">{host}</span>
+              </div>
+            )} */}
           </div>
         </div>
       ) : null}
