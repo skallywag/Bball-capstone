@@ -123,7 +123,12 @@ const Game = () => {
   return (
     <div className="detail-wrapper">
       <div className="detailCon">
-        <GameCard gameId={gameId} gameDetail={gameDetail} players={players} />
+        <GameCard
+          gameId={gameId}
+          gameDetail={gameDetail}
+          players={players}
+          host={host}
+        />
         {host ? (
           <div className="gameAction-con">
             <button

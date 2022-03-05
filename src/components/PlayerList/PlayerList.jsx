@@ -5,7 +5,7 @@ import { ClipLoader } from "react-spinners";
 // CSS
 import "./PlayerList.scss";
 
-const PlayerList = ({ players, gameDetail }) => {
+const PlayerList = ({ players }) => {
   return (
     <div className="players-con">
       <h1>Current Players</h1>
