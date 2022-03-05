@@ -1,11 +1,12 @@
 import React from "react";
 
-const GameCard = ({ players, gameDetail, host }) => {
-  // const host = players.map((player) => {
-  //   if (player?.userid === gameDetail?.userid) {
-  //     return player.firstname;
-  //   }
-  // });
+const GameCard = ({ players, gameDetail }) => {
+  const host = players.map((player) => {
+    if (player?.userid === gameDetail?.userid) {
+      return player.firstname;
+    }
+  });
+
   return (
     <div className="detailCon">
       {gameDetail ? (
