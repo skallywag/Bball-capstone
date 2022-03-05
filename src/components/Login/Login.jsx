@@ -48,7 +48,10 @@ const Login = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post("/login", values);
+        const response = await axios.post(
+          "http://localhost:5432/login",
+          values
+        );
         localStorage.removeItem("user");
         localStorage.setItem("user", JSON.stringify(response.data));
         dispatch(loginUser());

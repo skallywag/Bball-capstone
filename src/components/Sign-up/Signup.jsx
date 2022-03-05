@@ -71,7 +71,10 @@ const Signup = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.post("/register", values);
+        const response = await axios.post(
+          "http://localhost:5432/register",
+          values
+        );
         setAcctCreated(response.data);
         setTimeout(() => {
           navigate("/profile");
