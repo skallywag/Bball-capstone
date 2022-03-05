@@ -28,7 +28,7 @@ app.use(express.static(path.resolve(__dirname, "../build")));
 //Endpoints
 app.post("/register", createUser);
 app.post("/login", userLogin);
-app.post("/searchGames", searchGames);
+app.post("/SearchGames", searchGames);
 app.post("/create", createGame);
 app.post("/getPlayers", getPlayers);
 app.post("/userGame", getUsersGame);

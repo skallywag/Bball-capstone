@@ -34,7 +34,7 @@ const SearchBar = () => {
     const search = { input: input };
     async function getGames() {
       try {
-        const response = await axios.post("/searchGames", search);
+        const response = await axios.post("/SearchGames", search);
         setGamesList(response.data);
       } catch {
         console.error();
